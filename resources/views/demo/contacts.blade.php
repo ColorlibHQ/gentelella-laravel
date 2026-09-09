@@ -1,0 +1,90 @@
+{{--
+    GENERATED FILE — DO NOT EDIT.
+
+    Source: production/contacts.html in ColorlibHQ/gentelella.
+    Regenerate: npm run export:demo
+
+    Static markup: the body sits in a verbatim block and compiles to itself.
+--}}
+@extends('gentelella::page')
+
+@section('title', 'Users')
+@section('page_key', 'users')
+@section('breadcrumb', 'Home > Users')
+
+@section('content')
+@verbatim
+<div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Team</div>
+        <h1 class="page-title">Users</h1>
+      </div>
+      <div class="page-actions">
+        <button class="btn btn-outline">Import CSV</button>
+        <button class="btn btn-primary">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h8M8 4v8"/></svg>
+          Invite user
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-3" id="contacts-grid"></div>
+@endverbatim
+@endsection
+
+@push('scripts')
+@verbatim
+<script type="module">
+const people = [
+  ['Aigars Silkalns','A','primary','Admin','148','12','9'],
+  ['Sarah Kowalski','SK','azure','Designer','64','7','5'],
+  ['Michael Reyes','MR','purple','Engineer','98','11','4'],
+  ['Emily Wang','EW','yellow','PM','42','3','8'],
+  ['Mark Kim','MK','red','Engineer','71','6','2'],
+  ['Lina Park','LP','green','Marketing','38','9','6'],
+  ['Diego Reyes','DR','blue','Sales','83','14','11'],
+  ['Yuki Tanaka','YT','primary','Support','55','8','3'],
+  ['Tom Hardy','TH','purple','Engineer','67','5','7']
+];
+const colorMap = { primary:'linear-gradient(135deg,var(--primary),var(--primary-dk))', azure:'linear-gradient(135deg,var(--azure),#1d6fa5)', purple:'linear-gradient(135deg,var(--purple),#8a2da0)', yellow:'linear-gradient(135deg,var(--yellow),#c97f00)', red:'linear-gradient(135deg,var(--red),#a82b2b)', green:'linear-gradient(135deg,var(--green),#1a8a32)', blue:'linear-gradient(135deg,var(--blue),#0550a0)' };
+
+const grid = document.getElementById('contacts-grid');
+grid.innerHTML = people.map(([name, ini, col, role, projects, tasks, msgs], idx) => `
+  <div class="contact-card" data-idx="${idx}">
+    <div class="av" style="background:${colorMap[col]}">${ini}</div>
+    <div class="name">${name}</div>
+    <div class="role">${role}</div>
+    <div style="display:flex;gap:6px;justify-content:center;margin-bottom:12px">
+      <button class="btn btn-outline btn-sm" data-action="message">Message</button>
+      <button class="btn btn-primary btn-sm" data-action="view">View</button>
+    </div>
+    <div class="stats">
+      <div><strong>${projects}</strong>Projects</div>
+      <div><strong>${tasks}</strong>Tasks</div>
+      <div><strong>${msgs}</strong>Messages</div>
+    </div>
+  </div>
+`).join('');
+
+import('/src/v4/details.js').then(({ openContactModal }) => {
+  grid.addEventListener('click', (e) => {
+    const card = e.target.closest('.contact-card');
+    if (!card) return;
+    const idx = parseInt(card.dataset.idx, 10);
+    const p = people[idx];
+    if (!p) return;
+    const action = e.target.closest('[data-action]')?.dataset.action;
+    const [name, ini, col, role, projectsCount, tasks, msgs] = p;
+    // Both buttons + plain card click open the modal; the modal exposes
+    // Message/View actions of its own.
+    if (action === 'message' || action === 'view' || !e.target.closest('button')) {
+      e.preventDefault();
+      openContactModal({ name, ini, color: col, role, projects: projectsCount, tasks, msgs });
+    }
+  });
+});
+</script>
+@endverbatim
+@endpush

@@ -1,0 +1,124 @@
+{{--
+    GENERATED FILE — DO NOT EDIT.
+
+    Source: production/project_detail.html in ColorlibHQ/gentelella.
+    Regenerate: npm run export:demo
+
+    Static markup: the body sits in a verbatim block and compiles to itself.
+--}}
+@extends('gentelella::page')
+
+@section('title', 'Project — Acme Website Redesign')
+@section('page_key', 'project-detail')
+@section('breadcrumb', 'Home > Projects|projects.html > Acme Website Redesign')
+
+@section('content')
+@verbatim
+<div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Project · Acme Corp</div>
+        <h1 class="page-title">Acme Website Redesign</h1>
+      </div>
+      <div class="page-actions">
+        <span class="status status-green" style="font-size:12.5px">On track</span>
+        <button class="btn btn-outline">Share</button>
+        <button class="btn btn-primary">Update</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-8-4">
+    <!-- Main column -->
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="card">
+        <div class="card-header"><div class="card-title">Overview</div></div>
+        <div class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:1.6">
+          Refresh of the public marketing site with a new brand identity. Includes home, product, pricing, and ~12 marketing pages. Runs on the new headless CMS backed by the v2 design system.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">Tasks</div><div class="card-subtitle">12 of 18 completed</div></div><button class="btn btn-outline btn-sm">+ Add task</button></div>
+        <div class="card-body" style="padding:8px 16px">
+          <div class="todo-row done"><div class="todo-cb done"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 6l2.5 3 5-6"/></svg></div><span class="todo-text">Brand identity workshop</span><span class="todo-date">Mar 04</span></div>
+          <div class="todo-row done"><div class="todo-cb done"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 6l2.5 3 5-6"/></svg></div><span class="todo-text">Sitemap and IA</span><span class="todo-date">Mar 11</span></div>
+          <div class="todo-row done"><div class="todo-cb done"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 6l2.5 3 5-6"/></svg></div><span class="todo-text">Wireframes — desktop</span><span class="todo-date">Mar 18</span></div>
+          <div class="todo-row"><div class="todo-cb"></div><span class="todo-text">High-fidelity homepage</span><span class="todo-prio" style="background:var(--red)"></span><span class="todo-date">Apr 28</span></div>
+          <div class="todo-row"><div class="todo-cb"></div><span class="todo-text">Pricing page comp</span><span class="todo-prio" style="background:var(--yellow)"></span><span class="todo-date">May 02</span></div>
+          <div class="todo-row"><div class="todo-cb"></div><span class="todo-text">Mobile responsive pass</span><span class="todo-prio" style="background:var(--yellow)"></span><span class="todo-date">May 06</span></div>
+          <div class="todo-row"><div class="todo-cb"></div><span class="todo-text">CMS integration</span><span class="todo-prio" style="background:var(--green)"></span><span class="todo-date">May 14</span></div>
+          <div class="todo-row"><div class="todo-cb"></div><span class="todo-text">QA & launch</span><span class="todo-prio" style="background:var(--green)"></span><span class="todo-date">May 28</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div class="card-title">Activity</div></div>
+        <div class="card-body" style="padding:8px 16px">
+          <ul class="activity-list">
+            <li class="activity-item"><div class="activity-avatar" style="background:linear-gradient(135deg,var(--primary),var(--primary-dk))">SK</div><div><div class="activity-body"><strong>Sarah K.</strong> completed <strong>Wireframes — desktop</strong></div><div class="activity-time">2 hours ago</div></div></li>
+            <li class="activity-item"><div class="activity-avatar" style="background:linear-gradient(135deg,var(--blue),#0550a0)">MR</div><div><div class="activity-body"><strong>Michael R.</strong> commented on <strong>Homepage</strong></div><div class="activity-time">5 hours ago</div></div></li>
+            <li class="activity-item"><div class="activity-avatar" style="background:linear-gradient(135deg,var(--yellow),#c97f00)">EW</div><div><div class="activity-body"><strong>Emily W.</strong> uploaded 3 design files</div><div class="activity-time">Yesterday</div></div></li>
+            <li class="activity-item"><div class="activity-avatar" style="background:linear-gradient(135deg,var(--purple),#8a2da0)">DR</div><div><div class="activity-body"><strong>Diego R.</strong> moved this project to <strong>In Progress</strong></div><div class="activity-time">2 days ago</div></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar column -->
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="card">
+        <div class="card-header"><div class="card-title">Progress</div></div>
+        <div class="card-body" style="display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:4px"><span>Overall</span><span class="cell-strong">78%</span></div>
+            <div class="progress-thin"><div class="bar" style="width:78%;background:var(--primary)"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:4px"><span>Budget</span><span class="cell-strong">62%</span></div>
+            <div class="progress-thin"><div class="bar" style="width:62%;background:var(--azure)"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:4px"><span>Time</span><span class="cell-strong">71%</span></div>
+            <div class="progress-thin"><div class="bar" style="width:71%;background:var(--yellow)"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div class="card-title">Details</div></div>
+        <div class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:2">
+          <div><span style="color:var(--text-muted)">Client</span> · <strong style="color:var(--text)">Acme Corp</strong></div>
+          <div><span style="color:var(--text-muted)">Started</span> · Mar 04, 2026</div>
+          <div><span style="color:var(--text-muted)">Due</span> · May 28, 2026</div>
+          <div><span style="color:var(--text-muted)">Budget</span> · <strong style="color:var(--text)">$48,000</strong></div>
+          <div><span style="color:var(--text-muted)">Spent</span> · $29,760</div>
+          <div><span style="color:var(--text-muted)">Tags</span> · <span class="chip chip-primary">Web</span> <span class="chip chip-blue">Design</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div class="card-title">Team</div></div>
+        <div class="card-body" style="padding:8px 16px">
+          <div class="visitor-row" style="border-bottom:1px solid var(--border-color-light);padding:8px 0">
+            <div class="cell-avatar" style="width:28px;height:28px;font-size:11px;background:var(--primary)">SK</div>
+            <span class="visitor-name cell-strong">Sarah K.</span><span style="font-size:11px;color:var(--text-muted)">Lead designer</span>
+          </div>
+          <div class="visitor-row" style="border-bottom:1px solid var(--border-color-light);padding:8px 0">
+            <div class="cell-avatar" style="width:28px;height:28px;font-size:11px;background:var(--purple)">MR</div>
+            <span class="visitor-name cell-strong">Michael R.</span><span style="font-size:11px;color:var(--text-muted)">Engineer</span>
+          </div>
+          <div class="visitor-row" style="border-bottom:1px solid var(--border-color-light);padding:8px 0">
+            <div class="cell-avatar" style="width:28px;height:28px;font-size:11px;background:var(--yellow)">EW</div>
+            <span class="visitor-name cell-strong">Emily W.</span><span style="font-size:11px;color:var(--text-muted)">PM</span>
+          </div>
+          <div class="visitor-row" style="padding:8px 0">
+            <div class="cell-avatar" style="width:28px;height:28px;font-size:11px;background:var(--blue)">DR</div>
+            <span class="visitor-name cell-strong">Diego R.</span><span style="font-size:11px;color:var(--text-muted)">Sales</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endverbatim
+@endsection

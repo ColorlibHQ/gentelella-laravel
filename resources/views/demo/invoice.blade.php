@@ -1,0 +1,277 @@
+{{--
+    GENERATED FILE — DO NOT EDIT.
+
+    Source: production/invoice.html in ColorlibHQ/gentelella.
+    Regenerate: npm run export:demo
+
+    Static markup: the body sits in a verbatim block and compiles to itself.
+--}}
+@extends('gentelella::page')
+
+@section('title', 'Invoice')
+@section('page_key', 'invoice')
+@section('breadcrumb', 'Home > Invoice')
+
+@section('content')
+@verbatim
+<div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Billing</div>
+        <h1 class="page-title">Invoice <span style="font-weight:500;color:var(--text-muted)">#INV-04812</span></h1>
+      </div>
+      <div class="page-actions">
+        <span id="status-pill" class="status status-yellow" style="margin-right:8px">Pending</span>
+        <button class="btn btn-outline" id="mark-paid-btn">Mark as paid</button>
+        <button class="btn btn-outline" onclick="window.print()">Print</button>
+        <button class="btn btn-primary">Download PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="invoice" id="invoice-doc">
+      <div class="invoice-header">
+        <div>
+          <h2>Invoice</h2>
+          <div class="invoice-meta">
+            #INV-04812 · Issued <strong>Apr 24, 2026</strong> · Due <strong>May 24, 2026</strong>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div style="display:inline-flex;align-items:center;gap:8px">
+            <div class="brand-icon" style="width:32px;height:32px">G</div>
+            <div style="font-size:16px;font-weight:600;color:var(--text)">Gentelella Inc.</div>
+          </div>
+          <div style="font-size:11.5px;color:var(--text-muted);margin-top:6px">
+            123 Admin St, Suite 4<br>
+            Riga, LV-1010<br>
+            billing@gentelella.com
+          </div>
+        </div>
+      </div>
+
+      <div class="invoice-grid">
+        <div>
+          <h4>Billed to</h4>
+          <p>
+            <strong>Acme Corporation</strong><br>
+            Attn: John Doe<br>
+            456 Customer Ave<br>
+            San Francisco, CA 94105<br>
+            VAT: US-12345678
+          </p>
+        </div>
+        <div>
+          <h4>Pay to</h4>
+          <p>
+            <strong>Bank of Latvia</strong><br>
+            IBAN: LV80 BANK 1234 5678 9012 3<br>
+            SWIFT: BLATLV2X<br>
+            Reference: INV-04812
+          </p>
+        </div>
+      </div>
+
+      <!-- Editable line items -->
+      <div class="invoice-editor" id="invoice-editor">
+        <div class="invoice-editor-header">
+          <div>Description</div>
+          <div style="text-align:right">Qty</div>
+          <div style="text-align:right">Rate</div>
+          <div style="text-align:right">Amount</div>
+          <div></div>
+        </div>
+        <div id="line-items"></div>
+        <button type="button" class="btn btn-outline btn-sm" id="add-line" style="margin-top:10px">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 4v8M4 8h8"/></svg>
+          Add line item
+        </button>
+      </div>
+
+      <!-- Totals (editable discount + tax) -->
+      <div class="invoice-totals invoice-totals-editable">
+        <table>
+          <tr>
+            <td>Subtotal</td>
+            <td id="t-subtotal">$0.00</td>
+          </tr>
+          <tr>
+            <td>
+              Discount
+              <input type="number" class="totals-input" id="t-discount" aria-label="Discount percent" value="10" min="0" max="100" step="0.5">
+              <span style="color:var(--text-muted)">%</span>
+            </td>
+            <td id="t-discount-amount">−$0.00</td>
+          </tr>
+          <tr>
+            <td>
+              VAT
+              <input type="number" class="totals-input" id="t-tax" aria-label="Tax percent" value="21" min="0" max="100" step="0.5">
+              <span style="color:var(--text-muted)">%</span>
+            </td>
+            <td id="t-tax-amount">$0.00</td>
+          </tr>
+          <tr class="grand">
+            <td>Total due</td>
+            <td id="t-grand">$0.00</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Payment timeline -->
+      <div class="invoice-payment-status" id="payment-status">
+        <div class="ips-step done">
+          <div class="ips-dot"></div>
+          <div class="ips-label">
+            <div class="ips-title">Issued</div>
+            <div class="ips-time">Apr 24, 2026</div>
+          </div>
+        </div>
+        <div class="ips-step done">
+          <div class="ips-dot"></div>
+          <div class="ips-label">
+            <div class="ips-title">Sent to client</div>
+            <div class="ips-time">Apr 24, 2026 · 14:32</div>
+          </div>
+        </div>
+        <div class="ips-step active">
+          <div class="ips-dot"></div>
+          <div class="ips-label">
+            <div class="ips-title">Awaiting payment</div>
+            <div class="ips-time">Due May 24, 2026 · 21 days remaining</div>
+          </div>
+        </div>
+        <div class="ips-step" id="ips-paid">
+          <div class="ips-dot"></div>
+          <div class="ips-label">
+            <div class="ips-title">Paid</div>
+            <div class="ips-time">—</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border-color-light);font-size:11.5px;color:var(--text-muted);line-height:1.5">
+        <strong style="color:var(--text)">Payment terms:</strong> Net 30. Late payments incur 1.5% monthly interest.<br>
+        Questions? Email <a href="mailto:billing@gentelella.com">billing@gentelella.com</a>.
+      </div>
+    </div>
+  </div>
+@endverbatim
+@endsection
+
+@push('scripts')
+@verbatim
+<script type="module">
+import { showToast } from '/src/v4/toast.js';
+
+const seed = [
+  { desc: 'Gentelella Pro license', sub: 'Annual subscription · 50 seats', qty: 1, rate: 2499 },
+  { desc: 'Custom theme development', sub: 'Branded variant · 24h', qty: 24, rate: 120 },
+  { desc: 'Priority support', sub: '12 months · 4h response SLA', qty: 12, rate: 99 },
+  { desc: 'Onboarding workshop', sub: 'Half-day remote session', qty: 1, rate: 450 }
+];
+
+const fmt = (n) => '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const lines = document.getElementById('line-items');
+
+function rowHtml(item, i) {
+  return `
+    <div class="line-row" data-i="${i}">
+      <div class="desc-wrap">
+        <input type="text" class="desc" value="${item.desc.replace(/"/g, '&quot;')}" placeholder="Item description" aria-label="Item description">
+        <input type="text" class="desc desc-sub" value="${item.sub.replace(/"/g, '&quot;')}" placeholder="Optional details" aria-label="Item details">
+      </div>
+      <input type="number" class="qty" aria-label="Quantity" value="${item.qty}" min="0" step="1">
+      <input type="number" class="rate" aria-label="Rate" value="${item.rate}" min="0" step="0.01">
+      <div class="amount">${fmt(item.qty * item.rate)}</div>
+      <button type="button" class="remove-btn" aria-label="Remove">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h10M8 6V4a1.5 1.5 0 013 0v2"/><path d="M5 6l1 8.5h6L13 6"/></svg>
+      </button>
+    </div>
+  `;
+}
+
+function render() {
+  lines.innerHTML = seed.map(rowHtml).join('');
+  recompute();
+}
+
+function recompute() {
+  let subtotal = 0;
+  document.querySelectorAll('#line-items .line-row').forEach((row, idx) => {
+    const qty = parseFloat(row.querySelector('.qty').value) || 0;
+    const rate = parseFloat(row.querySelector('.rate').value) || 0;
+    const amount = qty * rate;
+    row.querySelector('.amount').textContent = fmt(amount);
+    subtotal += amount;
+    if (seed[idx]) {
+      seed[idx].qty = qty;
+      seed[idx].rate = rate;
+      seed[idx].desc = row.querySelector('.desc:not(.desc-sub)').value;
+      seed[idx].sub = row.querySelector('.desc-sub').value;
+    }
+  });
+
+  const dPct = parseFloat(document.getElementById('t-discount').value) || 0;
+  const tPct = parseFloat(document.getElementById('t-tax').value) || 0;
+  const dAmount = subtotal * dPct / 100;
+  const afterDiscount = subtotal - dAmount;
+  const tAmount = afterDiscount * tPct / 100;
+  const grand = afterDiscount + tAmount;
+
+  document.getElementById('t-subtotal').textContent = fmt(subtotal);
+  document.getElementById('t-discount-amount').textContent = '−' + fmt(dAmount);
+  document.getElementById('t-tax-amount').textContent = fmt(tAmount);
+  document.getElementById('t-grand').textContent = fmt(grand);
+}
+
+lines.addEventListener('input', recompute);
+lines.addEventListener('click', (e) => {
+  const btn = e.target.closest('.remove-btn');
+  if (!btn) return;
+  const row = btn.closest('.line-row');
+  const i = parseInt(row.dataset.i, 10);
+  seed.splice(i, 1);
+  render();
+});
+
+document.getElementById('add-line').addEventListener('click', () => {
+  seed.push({ desc: 'New item', sub: '', qty: 1, rate: 0 });
+  render();
+  // Focus the new row's description
+  const last = lines.querySelector('.line-row:last-child .desc');
+  if (last) { last.focus(); last.select(); }
+});
+
+document.getElementById('t-discount').addEventListener('input', recompute);
+document.getElementById('t-tax').addEventListener('input', recompute);
+
+// Mark as paid → flip status pill + advance the payment timeline
+const statusPill = document.getElementById('status-pill');
+const ipsPaid = document.getElementById('ips-paid');
+const paidBtn = document.getElementById('mark-paid-btn');
+let paid = false;
+paidBtn.addEventListener('click', () => {
+  paid = !paid;
+  if (paid) {
+    statusPill.className = 'status status-green';
+    statusPill.textContent = 'Paid';
+    ipsPaid.classList.add('paid');
+    ipsPaid.querySelector('.ips-time').textContent = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    paidBtn.textContent = 'Mark unpaid';
+    showToast('Marked as paid', { variant: 'success' });
+  } else {
+    statusPill.className = 'status status-yellow';
+    statusPill.textContent = 'Pending';
+    ipsPaid.classList.remove('paid');
+    ipsPaid.querySelector('.ips-time').textContent = '—';
+    paidBtn.textContent = 'Mark as paid';
+    showToast('Marked unpaid');
+  }
+});
+
+render();
+</script>
+@endverbatim
+@endpush

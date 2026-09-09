@@ -1,0 +1,285 @@
+{{--
+    GENERATED FILE — DO NOT EDIT.
+
+    Source: production/index3.html in ColorlibHQ/gentelella.
+    Regenerate: npm run export:demo
+
+    Static markup: the body sits in a verbatim block and compiles to itself.
+--}}
+@extends('gentelella::page')
+
+@section('title', 'Sales dashboard')
+@section('page_key', 'dashboard-3')
+@section('breadcrumb', 'Home > Dashboards > Sales')
+
+@section('content')
+@verbatim
+<div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Sales</div>
+        <h1 class="page-title">Pipeline & performance</h1>
+      </div>
+      <div class="page-actions">
+        <button class="btn btn-outline">Q1 2026</button>
+        <button class="btn btn-primary">+ New deal</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Row 1: Pipeline KPIs ── -->
+  <div class="row col-4">
+    <div class="card">
+      <div class="card-header"><div><div class="card-title">Open pipeline</div><div class="card-subtitle">42 active deals</div></div></div>
+      <div class="card-body" style="padding:8px 16px 16px">
+        <div style="font-size:30px;font-weight:600;letter-spacing:-1px;color:var(--text);line-height:1">$1,284,500</div>
+        <div style="font-size:11.5px;color:var(--text-muted);margin-top:6px">↑ 12% vs last month</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div><div class="card-title">Closed this month</div><div class="card-subtitle">17 deals won</div></div></div>
+      <div class="card-body" style="padding:8px 16px 16px">
+        <div style="font-size:30px;font-weight:600;letter-spacing:-1px;color:var(--green);line-height:1">$284,300</div>
+        <div style="font-size:11.5px;color:var(--text-muted);margin-top:6px">86% of $330k target</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div><div class="card-title">Win rate</div><div class="card-subtitle">Last 90 days</div></div></div>
+      <div class="card-body" style="padding:8px 16px 16px">
+        <div style="font-size:30px;font-weight:600;letter-spacing:-1px;color:var(--text);line-height:1">31.2%</div>
+        <div style="font-size:11.5px;color:var(--green);margin-top:6px">↑ 4.8pp · improving</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div><div class="card-title">Avg deal size</div><div class="card-subtitle">All-plan blended</div></div></div>
+      <div class="card-body" style="padding:8px 16px 16px">
+        <div style="font-size:30px;font-weight:600;letter-spacing:-1px;color:var(--text);line-height:1">$16,724</div>
+        <div style="font-size:11.5px;color:var(--text-muted);margin-top:6px">↑ 8% · upsell driven</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Row 2: Quarterly target gauge + Mixed orders chart ── -->
+  <div class="row col-4-8">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Quarterly target</div>
+          <div class="card-subtitle">$284k of $1M goal</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:240px">
+        <div data-chart="gauge" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Orders & AOV</div>
+          <div class="card-subtitle">Bar with secondary-axis line</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:240px">
+        <div data-chart="mixed-bar-line" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Row 3: Pipeline stages + Lead sources donut ── -->
+  <div class="row col-8-4">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Pipeline by stage</div>
+          <div class="card-subtitle">Q1 2026 · 42 deals · $1.28M</div>
+        </div>
+      </div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:14px">
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span class="cell-strong">Lead</span><span style="color:var(--text-muted);font-size:11.5px"><strong style="color:var(--text)">$420k</strong> · 18 deals</span></div>
+          <div class="progress-thin"><div class="bar" style="width:100%;background:var(--azure)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span class="cell-strong">Qualified</span><span style="color:var(--text-muted);font-size:11.5px"><strong style="color:var(--text)">$310k</strong> · 12 deals</span></div>
+          <div class="progress-thin"><div class="bar" style="width:74%;background:var(--primary)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span class="cell-strong">Proposal</span><span style="color:var(--text-muted);font-size:11.5px"><strong style="color:var(--text)">$220k</strong> · 7 deals</span></div>
+          <div class="progress-thin"><div class="bar" style="width:52%;background:var(--yellow)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span class="cell-strong">Negotiation</span><span style="color:var(--text-muted);font-size:11.5px"><strong style="color:var(--text)">$148k</strong> · 5 deals</span></div>
+          <div class="progress-thin"><div class="bar" style="width:35%;background:var(--purple)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span class="cell-strong">Closed won</span><span style="color:var(--text-muted);font-size:11.5px"><strong style="color:var(--green)">$284k</strong> · 17 deals</span></div>
+          <div class="progress-thin"><div class="bar" style="width:67%;background:var(--green)"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Lead sources</div></div>
+      <div class="card-body">
+        <div class="donut-block">
+          <div class="donut-svg">
+            <div data-chart="traffic-donut" style="width:100%;height:100%"></div>
+            <div class="donut-center-label"><div class="num">412</div><div class="sub">leads</div></div>
+          </div>
+          <div class="donut-legend">
+            <div class="donut-legend-item"><span class="dot" style="background:var(--primary)"></span> Inbound <span class="pct">40%</span></div>
+            <div class="donut-legend-item"><span class="dot" style="background:var(--azure)"></span> Outbound <span class="pct">20%</span></div>
+            <div class="donut-legend-item"><span class="dot" style="background:var(--yellow)"></span> Referral <span class="pct">15%</span></div>
+            <div class="donut-legend-item"><span class="dot" style="background:var(--purple)"></span> Partners <span class="pct">12%</span></div>
+            <div class="donut-legend-item"><span class="dot" style="background:var(--green)"></span> Events <span class="pct">13%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Row 4: Quota attainment + Activity radar ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Quota attainment</div><div class="card-subtitle" style="margin-left:8px">Q1 reps</div></div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:14px">
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span><strong>Sarah K.</strong> · Senior AE</span><span style="color:var(--green);font-weight:600">112%</span></div>
+          <div class="progress-thin"><div class="bar" style="width:100%;background:var(--green)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span><strong>Michael R.</strong> · AE</span><span style="color:var(--green);font-weight:600">97%</span></div>
+          <div class="progress-thin"><div class="bar" style="width:97%;background:var(--primary)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span><strong>Diego R.</strong> · AE</span><span style="color:var(--yellow);font-weight:600">78%</span></div>
+          <div class="progress-thin"><div class="bar" style="width:78%;background:var(--yellow)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span><strong>Yuki T.</strong> · BDR</span><span style="color:var(--yellow);font-weight:600">56%</span></div>
+          <div class="progress-thin"><div class="bar" style="width:56%;background:var(--yellow)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span><strong>Lina P.</strong> · BDR</span><span style="color:var(--red);font-weight:600">42%</span></div>
+          <div class="progress-thin"><div class="bar" style="width:42%;background:var(--red)"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Activity by rep</div>
+          <div class="card-subtitle">Calls · emails · meetings · demos · trials · closed</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:280px">
+        <div data-chart="radar" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Row 5: Top reps + Recent wins ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Top reps</div><a href="#" style="font-size:12px">Leaderboard</a></div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table">
+            <thead><tr><th>Rep</th><th>Deals</th><th>Revenue</th><th>Quota</th></tr></thead>
+            <tbody>
+              <tr><td><div class="cell-customer"><div class="cell-avatar" style="background:var(--primary)">SK</div><span class="cell-strong">Sarah K.</span></div></td><td>14</td><td class="cell-strong">$84,200</td><td><span class="status status-green">112%</span></td></tr>
+              <tr><td><div class="cell-customer"><div class="cell-avatar" style="background:var(--azure)">MR</div><span class="cell-strong">Michael R.</span></div></td><td>11</td><td class="cell-strong">$72,800</td><td><span class="status status-green">97%</span></td></tr>
+              <tr><td><div class="cell-customer"><div class="cell-avatar" style="background:var(--purple)">DR</div><span class="cell-strong">Diego R.</span></div></td><td>9</td><td class="cell-strong">$58,400</td><td><span class="status status-yellow">78%</span></td></tr>
+              <tr><td><div class="cell-customer"><div class="cell-avatar" style="background:var(--yellow)">YT</div><span class="cell-strong">Yuki T.</span></div></td><td>7</td><td class="cell-strong">$42,100</td><td><span class="status status-yellow">56%</span></td></tr>
+              <tr><td><div class="cell-customer"><div class="cell-avatar" style="background:var(--green)">LP</div><span class="cell-strong">Lina P.</span></div></td><td>5</td><td class="cell-strong">$28,400</td><td><span class="status status-red">42%</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Won this week</div><div style="margin-left:auto;font-size:12px;color:var(--green);font-weight:600">+$93,800</div></div>
+      <div class="card-body" style="padding:8px 16px">
+        <ul class="activity-list">
+          <li class="activity-item"><div class="activity-avatar" style="background:linear-gradient(135deg,var(--green),#1a8a32)">$</div><div><div class="activity-body"><strong>$24,500</strong> — Acme Corp · Pro plan, 50 seats</div><div class="activity-time">2 hours ago · Sarah K.</div></div></li>
+          <li class="activity-item"><div class="activity-avatar" style="background:linear-gradient(135deg,var(--green),#1a8a32)">$</div><div><div class="activity-body"><strong>$8,900</strong> — Globex Inc · Business · annual</div><div class="activity-time">Yesterday · Michael R.</div></div></li>
+          <li class="activity-item"><div class="activity-avatar" style="background:linear-gradient(135deg,var(--green),#1a8a32)">$</div><div><div class="activity-body"><strong>$48,000</strong> — Stark Ind. · Enterprise · 3-year</div><div class="activity-time">2 days ago · Sarah K.</div></div></li>
+          <li class="activity-item"><div class="activity-avatar" style="background:linear-gradient(135deg,var(--green),#1a8a32)">$</div><div><div class="activity-body"><strong>$12,400</strong> — Tyrell Corp · Pro · annual</div><div class="activity-time">3 days ago · Diego R.</div></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Row 6: Deal aging + Lost deals ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Deals at risk</div><div class="card-subtitle" style="margin-left:8px">stalled 14+ days</div></div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table">
+            <thead><tr><th>Deal</th><th>Stage</th><th>Value</th><th>Last touch</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><div class="cell-strong">Initech</div><div style="font-size:11px;color:var(--text-muted)">Sarah K.</div></td>
+                <td><span class="status status-yellow">Proposal</span></td>
+                <td class="cell-strong">$32,000</td>
+                <td><span style="color:var(--red);font-weight:500">22 days</span></td>
+              </tr>
+              <tr>
+                <td><div class="cell-strong">Soylent Corp</div><div style="font-size:11px;color:var(--text-muted)">Michael R.</div></td>
+                <td><span class="status status-yellow">Proposal</span></td>
+                <td class="cell-strong">$18,500</td>
+                <td><span style="color:var(--red);font-weight:500">18 days</span></td>
+              </tr>
+              <tr>
+                <td><div class="cell-strong">Wonka Industries</div><div style="font-size:11px;color:var(--text-muted)">Diego R.</div></td>
+                <td><span class="status status-yellow">Negotiation</span></td>
+                <td class="cell-strong">$54,200</td>
+                <td><span style="color:var(--yellow);font-weight:500">15 days</span></td>
+              </tr>
+              <tr>
+                <td><div class="cell-strong">Cyberdyne</div><div style="font-size:11px;color:var(--text-muted)">Yuki T.</div></td>
+                <td><span class="status status-yellow">Qualified</span></td>
+                <td class="cell-strong">$9,200</td>
+                <td><span style="color:var(--yellow);font-weight:500">14 days</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Lost reasons</div><div class="card-subtitle" style="margin-left:8px">Q1 — 12 deals</div></div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:12px;padding-top:14px">
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span style="color:var(--text)">Price too high</span><span style="color:var(--text-muted)">5 · $148k</span></div>
+          <div class="progress-thin"><div class="bar" style="width:42%;background:var(--red)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span style="color:var(--text)">No decision</span><span style="color:var(--text-muted)">3 · $62k</span></div>
+          <div class="progress-thin"><div class="bar" style="width:25%;background:var(--orange)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span style="color:var(--text)">Chose competitor</span><span style="color:var(--text-muted)">2 · $84k</span></div>
+          <div class="progress-thin"><div class="bar" style="width:17%;background:var(--purple)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span style="color:var(--text)">Timing</span><span style="color:var(--text-muted)">1 · $24k</span></div>
+          <div class="progress-thin"><div class="bar" style="width:8%;background:var(--yellow)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span style="color:var(--text)">Other</span><span style="color:var(--text-muted)">1 · $9k</span></div>
+          <div class="progress-thin"><div class="bar" style="width:8%;background:var(--text-muted)"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endverbatim
+@endsection

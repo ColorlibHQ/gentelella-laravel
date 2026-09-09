@@ -1,0 +1,318 @@
+{{--
+    GENERATED FILE — DO NOT EDIT.
+
+    Source: production/chartjs.html in ColorlibHQ/gentelella.
+    Regenerate: npm run export:demo
+
+    Static markup: the body sits in a verbatim block and compiles to itself.
+--}}
+@extends('gentelella::page')
+
+@section('title', 'Charts')
+@section('page_key', 'charts')
+@section('breadcrumb', 'Home > Charts')
+
+@section('content')
+@verbatim
+<div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Visualisations</div>
+        <h1 class="page-title">Charts</h1>
+      </div>
+      <div class="page-actions">
+        <button class="btn btn-outline">Refresh</button>
+        <button class="btn btn-primary">Export PNG</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Trends row ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Revenue trend</div>
+          <div class="card-subtitle">12-month area chart</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:260px">
+        <div data-chart="revenue-line" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Plan growth</div>
+          <div class="card-subtitle">Stacked area · Pro · Business · Starter</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:260px">
+        <div data-chart="stacked-area" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Categorical row ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Sales by channel</div>
+          <div class="card-subtitle">Q1 2026 · vertical bar</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:260px">
+        <div data-chart="sales-bar" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Top countries</div>
+          <div class="card-subtitle">Active users · horizontal bar</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:260px">
+        <div data-chart="horizontal-bar" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Mixed + Distribution row ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Orders & AOV</div>
+          <div class="card-subtitle">Bar with secondary-axis line</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:280px">
+        <div data-chart="mixed-bar-line" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Engagement vs retention</div>
+          <div class="card-subtitle">Bubble plot · size = MAU</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:280px">
+        <div data-chart="scatter" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Comparison + Funnel row ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">v3 vs v4</div>
+          <div class="card-subtitle">6-axis radar comparison</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:300px">
+        <div data-chart="radar" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Conversion funnel</div>
+          <div class="card-subtitle">Visitor → Paid stages</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:300px">
+        <div data-chart="funnel" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Heatmap + Polar + Gauge row ── -->
+  <div class="row col-3">
+    <div class="card" style="grid-column: span 2">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Activity heatmap</div>
+          <div class="card-subtitle">Events by hour and day-of-week</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:240px">
+        <div data-chart="heatmap" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Quarterly target</div>
+          <div class="card-subtitle">Gauge · 78% of goal</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:240px">
+        <div data-chart="gauge" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Market + Donut + Polar row ── -->
+  <div class="row col-3">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Stock OHLC</div>
+          <div class="card-subtitle">Candlestick · 14 sessions</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:240px">
+        <div data-chart="candlestick" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Traffic sources</div></div>
+      <div class="card-body">
+        <div class="donut-block">
+          <div class="donut-svg">
+            <div data-chart="traffic-donut" style="width:100%;height:100%"></div>
+            <div class="donut-center-label"><div class="num">42k</div><div class="sub">visits</div></div>
+          </div>
+          <div class="donut-legend">
+            <div class="donut-legend-item"><span class="dot" style="background:var(--primary)"></span> Organic <span class="pct">40%</span></div>
+            <div class="donut-legend-item"><span class="dot" style="background:var(--azure)"></span> Direct <span class="pct">20%</span></div>
+            <div class="donut-legend-item"><span class="dot" style="background:var(--yellow)"></span> Referral <span class="pct">15%</span></div>
+            <div class="donut-legend-item"><span class="dot" style="background:var(--purple)"></span> Social <span class="pct">12%</span></div>
+            <div class="donut-legend-item"><span class="dot" style="background:var(--green)"></span> Email <span class="pct">13%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Monthly mix</div>
+          <div class="card-subtitle">Polar bar by month</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:240px">
+        <div data-chart="polar-bar" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Treemap + Sankey row ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Revenue by product</div>
+          <div class="card-subtitle">Treemap · proportional cells</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:260px">
+        <div data-chart="treemap" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">User flow</div>
+          <div class="card-subtitle">Sankey · acquisition → conversion</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:260px">
+        <div data-chart="sankey" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Calendar heatmap (full width) ── -->
+  <div class="row col-1">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Activity — last 12 months</div>
+          <div class="card-subtitle">Calendar heatmap · contributions per day</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:180px">
+        <div data-chart="calendar-heatmap" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Gantt (full width) ── -->
+  <div class="row col-1">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Roadmap</div>
+          <div class="card-subtitle">Gantt · 7 tracks · custom-series</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:300px">
+        <div data-chart="gantt" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Existing widgets row (sparklines + alerts) ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Top metrics</div></div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:14px">
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:4px">
+            <span>Sessions</span><span class="cell-strong">12,348</span>
+          </div>
+          <div class="stat-spark" style="height:24px">
+            <div class="bar" style="height:30%"></div><div class="bar" style="height:50%"></div><div class="bar" style="height:40%"></div><div class="bar" style="height:60%"></div><div class="bar" style="height:55%"></div><div class="bar" style="height:75%"></div><div class="bar" style="height:65%"></div><div class="bar" style="height:85%"></div><div class="bar" style="height:90%"></div><div class="bar" style="height:80%"></div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:4px">
+            <span>Bounce rate</span><span class="cell-strong">38.4%</span>
+          </div>
+          <div class="stat-spark" style="height:24px">
+            <div class="bar" style="height:80%;background:var(--red)"></div><div class="bar" style="height:75%;background:var(--red)"></div><div class="bar" style="height:60%;background:var(--red)"></div><div class="bar" style="height:65%;background:var(--red)"></div><div class="bar" style="height:55%;background:var(--red)"></div><div class="bar" style="height:50%;background:var(--red)"></div><div class="bar" style="height:45%;background:var(--red)"></div><div class="bar" style="height:40%;background:var(--red)"></div><div class="bar" style="height:42%;background:var(--red)"></div><div class="bar" style="height:38%;background:var(--red)"></div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:4px">
+            <span>Avg duration</span><span class="cell-strong">3:42</span>
+          </div>
+          <div class="stat-spark" style="height:24px">
+            <div class="bar" style="height:50%;background:var(--blue)"></div><div class="bar" style="height:55%;background:var(--blue)"></div><div class="bar" style="height:60%;background:var(--blue)"></div><div class="bar" style="height:65%;background:var(--blue)"></div><div class="bar" style="height:70%;background:var(--blue)"></div><div class="bar" style="height:75%;background:var(--blue)"></div><div class="bar" style="height:80%;background:var(--blue)"></div><div class="bar" style="height:85%;background:var(--blue)"></div><div class="bar" style="height:90%;background:var(--blue)"></div><div class="bar" style="height:95%;background:var(--blue)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Status</div></div>
+      <div class="card-body">
+        <div class="alert alert-success">
+          <svg class="alert-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M5 8l2 2 4-4"/></svg>
+          <div class="alert-body"><strong>All systems operational</strong> — no incidents in the last 7 days.</div>
+        </div>
+        <div class="alert alert-info">
+          <svg class="alert-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v.01M8 7v4"/></svg>
+          <div class="alert-body"><strong>Maintenance window</strong> scheduled for Friday 02:00 UTC.</div>
+        </div>
+        <div class="alert alert-warning">
+          <svg class="alert-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2L1 14h14L8 2z"/><path d="M8 6v3M8 11v.01"/></svg>
+          <div class="alert-body"><strong>API rate near limit</strong> — 87% of monthly quota consumed.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endverbatim
+@endsection

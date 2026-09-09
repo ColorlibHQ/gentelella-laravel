@@ -1,0 +1,331 @@
+{{--
+    GENERATED FILE — DO NOT EDIT.
+
+    Source: production/profile.html in ColorlibHQ/gentelella.
+    Regenerate: npm run export:demo
+
+    Static markup: the body sits in a verbatim block and compiles to itself.
+--}}
+@extends('gentelella::page')
+
+@section('title', 'Profile')
+@section('page_key', 'profile')
+@section('breadcrumb', 'Home > Profile')
+
+@section('content')
+@verbatim
+<div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Account</div>
+        <h1 class="page-title">Your profile</h1>
+      </div>
+      <div class="page-actions">
+        <button class="btn btn-outline">Cancel</button>
+        <button class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-4-8">
+    <!-- Profile summary -->
+    <div class="card">
+      <div class="card-body" style="text-align:center;padding:24px 16px">
+        <div style="width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-dk));margin:0 auto 12px;display:flex;align-items:center;justify-content:center;color:white;font-size:32px;font-weight:600">A</div>
+        <div style="font-size:16px;font-weight:600;color:var(--text)">Aigars Silkalns</div>
+        <div style="font-size:12.5px;color:var(--text-muted);margin-top:2px">Admin · Latvia</div>
+        <div style="margin-top:14px;display:flex;gap:6px;justify-content:center">
+          <button class="btn btn-outline btn-sm">Change avatar</button>
+        </div>
+      </div>
+      <div style="border-top:1px solid var(--border-color-light)">
+        <div class="profile-ring-box" style="padding:16px">
+          <div class="ring-wrap">
+            <svg viewBox="0 0 80 80">
+              <circle class="ring-bg" cx="40" cy="40" r="34"/>
+              <circle class="ring-fill" cx="40" cy="40" r="34" stroke-dashoffset="60"/>
+            </svg>
+            <div class="ring-center">72<span>%</span></div>
+          </div>
+          <div class="note">Profile completion</div>
+          <a href="#" class="ring-link">Complete now →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile form -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Personal information</div>
+          <div class="card-subtitle">Update your name, email, and contact details.</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="firstName">First name</label>
+            <input type="text" id="firstName" class="form-control" value="Aigars">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lastName">Last name</label>
+            <input type="text" id="lastName" class="form-control" value="Silkalns">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="email2">Email <span class="required">*</span></label>
+            <input type="email" id="email2" class="form-control" value="aigars@colorlib.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="phone">Phone</label>
+            <input type="tel" id="phone" class="form-control" placeholder="+371 …">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="role">Role</label>
+          <select id="role" class="form-control">
+            <option>Administrator</option>
+            <option>Editor</option>
+            <option>Viewer</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="bio">Bio</label>
+          <textarea id="bio" class="form-control" placeholder="Tell us a bit about yourself…">Founder at Colorlib. Building admin templates since 2014.</textarea>
+          <div class="form-help">Brief description for your profile. URLs are hyperlinked.</div>
+        </div>
+
+        <div class="form-actions right">
+          <button class="btn btn-outline">Discard</button>
+          <button class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Notifications</div>
+          <div class="card-subtitle">Choose how we contact you.</div>
+        </div>
+      </div>
+      <div class="card-body" style="padding:6px 16px">
+        <div class="toggle-row"><div><div class="label">Product updates</div><div class="desc">Get notified about new features and improvements.</div></div><div class="toggle on"></div></div>
+        <div class="toggle-row"><div><div class="label">Weekly digest</div><div class="desc">A summary of activity, every Monday.</div></div><div class="toggle on"></div></div>
+        <div class="toggle-row"><div><div class="label">Security alerts</div><div class="desc">Sign-ins from new devices and password changes.</div></div><div class="toggle on"></div></div>
+        <div class="toggle-row"><div><div class="label">Marketing emails</div><div class="desc">Tips, deals, and partner offers.</div></div><div class="toggle"></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Sessions</div>
+          <div class="card-subtitle">Devices currently signed into your account.</div>
+        </div>
+        <button class="btn btn-outline btn-sm">Sign out all</button>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr><th>Device</th><th>Location</th><th>Last seen</th><th></th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="cell-strong">MacBook Pro</span><div style="font-size:11px;color:var(--text-muted)">Chrome 120</div></td>
+                <td>Riga, LV</td>
+                <td><span class="status status-green">Active now</span></td>
+                <td style="text-align:right"></td>
+              </tr>
+              <tr>
+                <td><span class="cell-strong">iPhone 15</span><div style="font-size:11px;color:var(--text-muted)">Safari Mobile</div></td>
+                <td>Riga, LV</td>
+                <td>2 hours ago</td>
+                <td style="text-align:right"><button class="btn btn-outline btn-sm">Revoke</button></td>
+              </tr>
+              <tr>
+                <td><span class="cell-strong">Windows PC</span><div style="font-size:11px;color:var(--text-muted)">Edge 121</div></td>
+                <td>Tallinn, EE</td>
+                <td>5 days ago</td>
+                <td style="text-align:right"><button class="btn btn-outline btn-sm">Revoke</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Stats + Achievements row ── -->
+  <div class="row col-4-8">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Account stats</div></div>
+      <div class="card-body" style="padding:0">
+        <div style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border-color-light)">
+          <div style="padding:16px;border-right:1px solid var(--border-color-light);text-align:center">
+            <div style="font-size:22px;font-weight:600;color:var(--text)">142</div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px">Projects</div>
+          </div>
+          <div style="padding:16px;text-align:center">
+            <div style="font-size:22px;font-weight:600;color:var(--text)">28</div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px">Team</div>
+          </div>
+          <div style="padding:16px;border-top:1px solid var(--border-color-light);border-right:1px solid var(--border-color-light);text-align:center">
+            <div style="font-size:22px;font-weight:600;color:var(--text)">1.2k</div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px">Commits</div>
+          </div>
+          <div style="padding:16px;border-top:1px solid var(--border-color-light);text-align:center">
+            <div style="font-size:22px;font-weight:600;color:var(--text)">4.9</div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px">Rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Achievements</div>
+          <div class="card-subtitle">Earned badges across the workspace.</div>
+        </div>
+        <a href="#" style="font-size:12px">See all</a>
+      </div>
+      <div class="card-body">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px">
+          <div style="text-align:center;padding:14px 8px;border:1px solid var(--border-color-light);border-radius:var(--radius);background:var(--primary-lt)">
+            <div style="width:44px;height:44px;border-radius:50%;background:var(--primary);color:white;display:flex;align-items:center;justify-content:center;margin:0 auto 8px">
+              <svg width="22" height="22" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1l2 5 5 .5-4 3.5 1 5-4-2.5-4 2.5 1-5-4-3.5 5-.5z"/></svg>
+            </div>
+            <div style="font-size:12px;font-weight:600;color:var(--text)">Top contributor</div>
+            <div style="font-size:10.5px;color:var(--text-muted);margin-top:2px">100+ PRs</div>
+          </div>
+          <div style="text-align:center;padding:14px 8px;border:1px solid var(--border-color-light);border-radius:var(--radius)">
+            <div style="width:44px;height:44px;border-radius:50%;background:var(--yellow-lt);color:var(--yellow);display:flex;align-items:center;justify-content:center;margin:0 auto 8px">
+              <svg width="22" height="22" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="9" r="5"/><path d="M8 14l-2 1 1-3"/></svg>
+            </div>
+            <div style="font-size:12px;font-weight:600;color:var(--text)">Reviewer</div>
+            <div style="font-size:10.5px;color:var(--text-muted);margin-top:2px">50+ reviews</div>
+          </div>
+          <div style="text-align:center;padding:14px 8px;border:1px solid var(--border-color-light);border-radius:var(--radius)">
+            <div style="width:44px;height:44px;border-radius:50%;background:var(--purple-lt);color:var(--purple);display:flex;align-items:center;justify-content:center;margin:0 auto 8px">
+              <svg width="22" height="22" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1l7 13H1L8 1z"/></svg>
+            </div>
+            <div style="font-size:12px;font-weight:600;color:var(--text)">Early adopter</div>
+            <div style="font-size:10.5px;color:var(--text-muted);margin-top:2px">Joined 2014</div>
+          </div>
+          <div style="text-align:center;padding:14px 8px;border:1px solid var(--border-color-light);border-radius:var(--radius)">
+            <div style="width:44px;height:44px;border-radius:50%;background:var(--blue-lt);color:var(--blue);display:flex;align-items:center;justify-content:center;margin:0 auto 8px">
+              <svg width="22" height="22" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h10M3 10h10M3 14h6"/></svg>
+            </div>
+            <div style="font-size:12px;font-weight:600;color:var(--text)">Documenter</div>
+            <div style="font-size:10.5px;color:var(--text-muted);margin-top:2px">25+ articles</div>
+          </div>
+          <div style="text-align:center;padding:14px 8px;border:1px solid var(--border-color-light);border-radius:var(--radius)">
+            <div style="width:44px;height:44px;border-radius:50%;background:var(--green-lt);color:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 8px">
+              <svg width="22" height="22" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l3 3 7-7"/></svg>
+            </div>
+            <div style="font-size:12px;font-weight:600;color:var(--text)">Reliable</div>
+            <div style="font-size:10.5px;color:var(--text-muted);margin-top:2px">98% on-time</div>
+          </div>
+          <div style="text-align:center;padding:14px 8px;border:1px solid var(--border-color-light);border-radius:var(--radius);opacity:.5">
+            <div style="width:44px;height:44px;border-radius:50%;background:var(--bg-surface-secondary);color:var(--text-muted);display:flex;align-items:center;justify-content:center;margin:0 auto 8px">
+              <svg width="22" height="22" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="6" width="8" height="6" rx="1.5"/><path d="M6 6V4a2 2 0 014 0v2"/></svg>
+            </div>
+            <div style="font-size:12px;font-weight:600;color:var(--text)">Locked</div>
+            <div style="font-size:10.5px;color:var(--text-muted);margin-top:2px">200 PRs needed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Connected accounts + Activity timeline ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Connected accounts</div>
+          <div class="card-subtitle">Sign in faster with these providers.</div>
+        </div>
+      </div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--border-color-light);border-radius:var(--radius)">
+          <div style="width:36px;height:36px;border-radius:8px;background:#0e1117;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">GH</div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:600;color:var(--text)">GitHub</div>
+            <div style="font-size:11.5px;color:var(--text-muted)">@aigars · connected since 2014</div>
+          </div>
+          <span class="status status-green">Connected</span>
+          <button class="btn btn-outline btn-sm">Disconnect</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--border-color-light);border-radius:var(--radius)">
+          <div style="width:36px;height:36px;border-radius:8px;background:#4285f4;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">G</div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:600;color:var(--text)">Google</div>
+            <div style="font-size:11.5px;color:var(--text-muted)">aigars@example.com</div>
+          </div>
+          <span class="status status-green">Connected</span>
+          <button class="btn btn-outline btn-sm">Disconnect</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--border-color-light);border-radius:var(--radius)">
+          <div style="width:36px;height:36px;border-radius:8px;background:#4a154b;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">SL</div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:600;color:var(--text)">Slack</div>
+            <div style="font-size:11.5px;color:var(--text-muted)">colorlib workspace</div>
+          </div>
+          <button class="btn btn-primary btn-sm">Connect</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--border-color-light);border-radius:var(--radius)">
+          <div style="width:36px;height:36px;border-radius:8px;background:#000;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">𝕏</div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:600;color:var(--text)">X (Twitter)</div>
+            <div style="font-size:11.5px;color:var(--text-muted)">@aigars</div>
+          </div>
+          <button class="btn btn-primary btn-sm">Connect</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Recent activity</div></div>
+      <div class="card-body">
+        <div class="timeline">
+          <div class="timeline-item is-primary">
+            <div class="ti-time">Just now</div>
+            <div class="ti-title">Profile photo updated</div>
+          </div>
+          <div class="timeline-item is-blue">
+            <div class="ti-time">2 hours ago</div>
+            <div class="ti-title">Signed in from <strong>iPhone 15</strong></div>
+            <div class="ti-desc">Riga, LV</div>
+          </div>
+          <div class="timeline-item is-green">
+            <div class="ti-time">Yesterday</div>
+            <div class="ti-title">Earned achievement: <strong>Reliable</strong></div>
+          </div>
+          <div class="timeline-item">
+            <div class="ti-time">3 days ago</div>
+            <div class="ti-title">Connected <strong>Google</strong> account</div>
+          </div>
+          <div class="timeline-item is-yellow">
+            <div class="ti-time">1 week ago</div>
+            <div class="ti-title">Two-factor authentication enabled</div>
+            <div class="ti-desc">Authenticator app · backup codes saved</div>
+          </div>
+          <div class="timeline-item">
+            <div class="ti-time">2 weeks ago</div>
+            <div class="ti-title">Joined team <strong>Colorlib</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endverbatim
+@endsection

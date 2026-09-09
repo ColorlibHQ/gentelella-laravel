@@ -1,0 +1,163 @@
+{{--
+    GENERATED FILE — DO NOT EDIT.
+
+    Source: production/orders.html in ColorlibHQ/gentelella.
+    Regenerate: npm run export:demo
+
+    Static markup: the body sits in a verbatim block and compiles to itself.
+--}}
+@extends('gentelella::page')
+
+@section('title', 'Orders')
+@section('page_key', 'orders')
+@section('breadcrumb', 'Home > Orders')
+
+@section('content')
+@verbatim
+<div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Shop</div>
+        <h1 class="page-title">Orders</h1>
+      </div>
+      <div class="page-actions">
+        <button class="btn btn-outline">Export CSV</button>
+        <button class="btn btn-primary">+ Manual order</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stat row -->
+  <div class="row col-3" style="margin-bottom:16px">
+    <div class="card"><div class="stat"><div class="stat-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg></div><div class="stat-content"><div class="stat-label">Total orders</div><div class="stat-value-row"><span class="stat-value">1,240</span><span class="stat-change up">12%</span></div><div class="stat-subtext">78 today</div></div></div></div>
+    <div class="card"><div class="stat"><div class="stat-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><div class="stat-content"><div class="stat-label">Revenue</div><div class="stat-value-row"><span class="stat-value">$84,520</span><span class="stat-change up">18%</span></div><div class="stat-subtext">$3,218 today</div></div></div></div>
+    <div class="card"><div class="stat"><div class="stat-icon yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="stat-content"><div class="stat-label">Pending</div><div class="stat-value-row"><span class="stat-value">42</span><span class="stat-change down">3%</span></div><div class="stat-subtext">5 awaiting payment</div></div></div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="card-title">All orders</div>
+        <div class="card-subtitle">1,240 results</div>
+      </div>
+      <div class="card-options">
+        <label style="font-size:11.5px;color:var(--text-muted);margin-right:6px">Status</label>
+        <select class="form-control" style="width:170px;height:32px" aria-label="Filter by status">
+          <option>All statuses</option>
+          <option>Paid</option>
+          <option>Processing</option>
+          <option>Pending</option>
+          <option>Cancelled</option>
+        </select>
+      </div>
+    </div>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table" data-datatable data-page-length="10" data-export="orders">
+          <thead>
+            <tr>
+              <th>Order</th>
+              <th>Customer</th>
+              <th>Items</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Payment</th>
+              <th>Date</th>
+              <th data-orderable="false"></th>
+            </tr>
+          </thead>
+          <tbody id="orders-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+@endverbatim
+@endsection
+
+@push('scripts')
+@verbatim
+<script type="module">
+// This page demonstrates the data-adapter pattern. By default it uses
+// a hardcoded SEED array — the standard "self-contained demo" mode.
+// Add `?api=1` to the URL to fetch from /api/orders instead. Run the
+// example backend in `examples/express-sqlite/` to see it in action.
+import { useApiMode, seedAdapter, httpAdapter } from '/src/v4/data-adapter.js';
+
+const SEED = [
+  { id:'#7841', customer:'John Doe',      initials:'JD', avatarColor:'primary',  items:3, total:245, status:'paid',       payment:'Visa •••• 4242',       createdAt:'Apr 28, 2026' },
+  { id:'#7840', customer:'Anna Smith',    initials:'AS', avatarColor:'azure',    items:1, total: 89, status:'processing', payment:'Mastercard •••• 8841', createdAt:'Apr 28, 2026' },
+  { id:'#7839', customer:'Robert Jones',  initials:'RJ', avatarColor:'purple',   items:5, total:490, status:'paid',       payment:'PayPal',               createdAt:'Apr 28, 2026' },
+  { id:'#7838', customer:'Emily Wang',    initials:'EW', avatarColor:'yellow',   items:2, total:125, status:'pending',    payment:'Stripe checkout',      createdAt:'Apr 27, 2026' },
+  { id:'#7837', customer:'Mark Kim',      initials:'MK', avatarColor:'red',      items:1, total: 67, status:'cancelled',  payment:'Visa •••• 1234',       createdAt:'Apr 27, 2026' },
+  { id:'#7836', customer:'Lina Park',     initials:'LP', avatarColor:'green',    items:4, total:312, status:'paid',       payment:'Visa •••• 4242',       createdAt:'Apr 27, 2026' },
+  { id:'#7835', customer:'Diego Reyes',   initials:'DR', avatarColor:'blue',     items:2, total:178, status:'paid',       payment:'Apple Pay',            createdAt:'Apr 26, 2026' },
+  { id:'#7834', customer:'Yuki Tanaka',   initials:'YT', avatarColor:'primary',  items:3, total:234, status:'processing', payment:'Mastercard •••• 7712', createdAt:'Apr 26, 2026' },
+  { id:'#7833', customer:'Sarah Kowalski',initials:'SK', avatarColor:'primary',  items:6, total:549, status:'paid',       payment:'Stripe checkout',      createdAt:'Apr 26, 2026' },
+  { id:'#7832', customer:'Michael Reyes', initials:'MR', avatarColor:'purple',   items:1, total: 45, status:'pending',    payment:'PayPal',               createdAt:'Apr 25, 2026' },
+  { id:'#7831', customer:'Tom Hardy',     initials:'TH', avatarColor:'purple',   items:2, total:195, status:'paid',       payment:'Visa •••• 4242',       createdAt:'Apr 25, 2026' },
+  { id:'#7830', customer:'Anna Smith',    initials:'AS', avatarColor:'azure',    items:3, total:220, status:'paid',       payment:'Mastercard •••• 8841', createdAt:'Apr 24, 2026' },
+  { id:'#7829', customer:'John Doe',      initials:'JD', avatarColor:'primary',  items:1, total: 79, status:'paid',       payment:'Apple Pay',            createdAt:'Apr 24, 2026' },
+  { id:'#7828', customer:'Robert Jones',  initials:'RJ', avatarColor:'purple',   items:2, total:168, status:'cancelled',  payment:'Visa •••• 5566',       createdAt:'Apr 23, 2026' },
+  { id:'#7827', customer:'Emily Wang',    initials:'EW', avatarColor:'yellow',   items:4, total:388, status:'paid',       payment:'Stripe checkout',      createdAt:'Apr 23, 2026' },
+  { id:'#7826', customer:'Mark Kim',      initials:'MK', avatarColor:'red',      items:1, total:112, status:'paid',       payment:'Google Pay',           createdAt:'Apr 22, 2026' },
+  { id:'#7825', customer:'Diego Reyes',   initials:'DR', avatarColor:'blue',     items:2, total:156, status:'processing', payment:'PayPal',               createdAt:'Apr 22, 2026' },
+  { id:'#7824', customer:'Lina Park',     initials:'LP', avatarColor:'green',    items:3, total:247, status:'paid',       payment:'Visa •••• 4242',       createdAt:'Apr 21, 2026' },
+  { id:'#7823', customer:'Yuki Tanaka',   initials:'YT', avatarColor:'primary',  items:1, total: 58, status:'paid',       payment:'Apple Pay',            createdAt:'Apr 21, 2026' },
+  { id:'#7822', customer:'Sarah Kowalski',initials:'SK', avatarColor:'primary',  items:2, total:132, status:'paid',       payment:'Stripe checkout',      createdAt:'Apr 20, 2026' }
+];
+
+const colorMap = { primary:'var(--primary)', azure:'var(--azure)', purple:'var(--purple)', yellow:'var(--yellow)', red:'var(--red)', green:'var(--green)', blue:'var(--blue)' };
+const STATUS = { paid:'green', processing:'blue', pending:'yellow', cancelled:'red' };
+
+const adapter = useApiMode()
+  ? httpAdapter('/api/orders', { listKey: 'orders' })
+  : seedAdapter(SEED);
+
+const tbody = document.getElementById('orders-rows');
+
+function rowHtml(o) {
+  return `
+    <tr>
+      <td class="cell-mono"><a href="order_detail.html" style="color:var(--primary);font-weight:var(--font-weight-medium)">${o.id}</a></td>
+      <td><div class="cell-customer"><div class="cell-avatar" style="background:${colorMap[o.avatarColor] || 'var(--primary)'}">${o.initials}</div><span class="cell-strong">${o.customer}</span></div></td>
+      <td>${o.items}</td>
+      <td class="cell-strong">$${o.total}</td>
+      <td><span class="status status-${STATUS[o.status]}">${o.status[0].toUpperCase() + o.status.slice(1)}</span></td>
+      <td style="font-size:12px;color:var(--text-muted)">${o.payment}</td>
+      <td>${o.createdAt}</td>
+      <td><button class="card-opt-btn" aria-label="More"><svg viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="3" r="1.2"/><circle cx="8" cy="8" r="1.2"/><circle cx="8" cy="13" r="1.2"/></svg></button></td>
+    </tr>`;
+}
+
+// Loading state during fetch — emit 5 skeleton rows so the table looks "alive"
+// while the network request resolves. In seed mode this flashes briefly.
+function skeletonRows(n = 5) {
+  const cell = '<td><span class="skeleton skeleton-text" style="width:80%"></span></td>';
+  return Array.from({ length: n }, () => `<tr>${cell.repeat(8)}</tr>`).join('');
+}
+
+async function load() {
+  tbody.innerHTML = skeletonRows();
+  try {
+    const orders = await adapter.list();
+    if (!orders.length) {
+      tbody.innerHTML = `<tr><td colspan="8" style="padding:40px;text-align:center;color:var(--text-muted)">No orders yet.</td></tr>`;
+      return;
+    }
+    tbody.innerHTML = orders.map(rowHtml).join('');
+  } catch (err) {
+    tbody.innerHTML = `
+      <tr><td colspan="8" style="padding:24px">
+        <div class="banner banner-danger">
+          <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M5 5l6 6M11 5l-6 6"/></svg>
+          <div class="banner-body"><strong>Failed to load orders.</strong> ${err.message || err}</div>
+          <div class="banner-actions"><button class="btn btn-outline btn-sm" id="orders-retry">Retry</button></div>
+        </div>
+      </td></tr>`;
+    document.getElementById('orders-retry')?.addEventListener('click', load);
+  }
+}
+load();
+</script>
+@endverbatim
+@endpush

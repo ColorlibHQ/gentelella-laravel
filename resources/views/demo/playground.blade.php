@@ -1,0 +1,973 @@
+{{--
+    GENERATED FILE — DO NOT EDIT.
+
+    Source: production/playground.html in ColorlibHQ/gentelella.
+    Regenerate: npm run export:demo
+
+    Static markup: the body sits in a verbatim block and compiles to itself.
+--}}
+@extends('gentelella::page')
+
+@section('title', 'Playground')
+@section('page_key', 'playground')
+@section('breadcrumb', 'Home > Playground')
+
+@section('content')
+@verbatim
+<div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Developer</div>
+        <h1 class="page-title">Component playground</h1>
+      </div>
+      <div class="page-actions">
+        <a class="btn btn-outline" href="general_elements.html">All UI</a>
+        <a class="btn btn-outline" href="form.html">Forms</a>
+        <a class="btn btn-outline" href="theme.html">Theme generator</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="banner banner-info">
+    <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v.01M8 7v4"/></svg>
+    <div class="banner-body"><strong>Edit any code block live</strong> — type into it and the preview above updates in real time. Or click <strong>Copy</strong> to grab the HTML for your own page. Every component uses the v4 design tokens, so it'll match your theme out of the box.</div>
+  </div>
+
+  <div class="playground-layout">
+    <!-- Left rail: jump nav -->
+    <aside class="pg-nav">
+      <div class="pg-nav-label">Components</div>
+      <a class="pg-nav-link active" href="#buttons">Buttons</a>
+      <a class="pg-nav-link" href="#status">Status & badges</a>
+      <a class="pg-nav-link" href="#alerts">Alerts</a>
+      <a class="pg-nav-link" href="#cards">Cards</a>
+      <a class="pg-nav-link" href="#forms-basic">Form inputs</a>
+      <a class="pg-nav-link" href="#forms-advanced">Advanced forms</a>
+      <a class="pg-nav-link" href="#tables">Tables</a>
+      <a class="pg-nav-link" href="#tabs">Tabs</a>
+      <a class="pg-nav-link" href="#progress">Progress</a>
+      <a class="pg-nav-link" href="#stats">Stat tiles</a>
+      <a class="pg-nav-link" href="#timeline">Timeline</a>
+      <a class="pg-nav-link" href="#accordion">Accordion</a>
+      <a class="pg-nav-link" href="#empty">Empty state</a>
+      <div class="pg-nav-label" style="margin-top:14px">Async patterns</div>
+      <a class="pg-nav-link" href="#skeleton-table">Skeleton table</a>
+      <a class="pg-nav-link" href="#skeleton-tiles">Skeleton tiles</a>
+      <a class="pg-nav-link" href="#async-list">List lifecycle</a>
+      <a class="pg-nav-link" href="#submit-spinner">Submit spinner</a>
+      <a class="pg-nav-link" href="#banners">Banners</a>
+      <div class="pg-nav-label" style="margin-top:14px">Markup helpers</div>
+      <a class="pg-nav-link" href="#helpers-intro">Overview</a>
+      <a class="pg-nav-link" href="#helpers-stat">statTile()</a>
+      <a class="pg-nav-link" href="#helpers-status">statusBadge()</a>
+      <a class="pg-nav-link" href="#helpers-customer">customerCell()</a>
+      <a class="pg-nav-link" href="#helpers-activity">activityItem()</a>
+      <a class="pg-nav-link" href="#helpers-visitor">visitorRow()</a>
+      <a class="pg-nav-link" href="#helpers-empty">emptyState()</a>
+    </aside>
+
+    <div class="pg-content" id="pg-content">
+
+      <!-- Buttons -->
+      <section class="pg-block" id="buttons">
+        <h2>Buttons</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview>
+            <button class="btn btn-primary">Primary</button>
+            <button class="btn btn-outline">Outline</button>
+            <button class="btn btn-ghost">Ghost</button>
+            <button class="btn btn-danger">Danger</button>
+            <button class="btn btn-primary btn-sm">Small</button>
+            <button class="btn btn-primary" disabled>Disabled</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Status -->
+      <section class="pg-block" id="status">
+        <h2>Status & badges</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview>
+            <span class="status status-green">Active</span>
+            <span class="status status-yellow">Pending</span>
+            <span class="status status-red">Failed</span>
+            <span class="status status-blue">Info</span>
+            <span class="chip">Tag</span>
+            <span class="chip">Removable<button class="chip-close" aria-label="Remove">×</button></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Alerts -->
+      <section class="pg-block" id="alerts">
+        <h2>Alerts</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview style="display:flex;flex-direction:column;gap:10px;align-items:stretch">
+            <div class="alert alert-success">
+              <svg class="alert-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M5 8l2 2 4-4"/></svg>
+              <div class="alert-body"><strong>Saved!</strong> Changes have been published.</div>
+            </div>
+            <div class="alert alert-warning">
+              <svg class="alert-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2L1 14h14L8 2z"/><path d="M8 6v3M8 11v.01"/></svg>
+              <div class="alert-body"><strong>Heads up.</strong> API quota at 87%.</div>
+            </div>
+            <div class="alert alert-danger">
+              <svg class="alert-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M5 5l6 6M11 5l-6 6"/></svg>
+              <div class="alert-body"><strong>Payment failed.</strong> Retry to continue.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cards -->
+      <section class="pg-block" id="cards">
+        <h2>Cards</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+            <div class="card">
+              <div class="card-header"><div class="card-title">Plain card</div></div>
+              <div class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:1.5">A simple card with header and body. The most common building block.</div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">With subtitle</div>
+                  <div class="card-subtitle">Plus an action</div>
+                </div>
+                <button class="btn btn-outline btn-sm">Action</button>
+              </div>
+              <div class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:1.5">Header has room for actions on the right.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Form inputs -->
+      <section class="pg-block" id="forms-basic">
+        <h2>Form inputs</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
+            <div class="form-group">
+              <label class="form-label" for="pg-text">Text</label>
+              <input id="pg-text" class="form-control" type="text" placeholder="Type here…">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="pg-select">Select</label>
+              <select id="pg-select" class="form-control">
+                <option>Option A</option>
+                <option>Option B</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Switch</label>
+              <label class="switch"><input type="checkbox" checked><span class="track"></span><span class="switch-label">Enabled</span></label>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Segmented</label>
+              <div class="segmented">
+                <label><input type="radio" name="pg-seg" checked><span>Day</span></label>
+                <label><input type="radio" name="pg-seg"><span>Week</span></label>
+                <label><input type="radio" name="pg-seg"><span>Month</span></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Advanced forms -->
+      <section class="pg-block" id="forms-advanced">
+        <h2>Advanced form controls</h2>
+
+        <div class="pg-card" data-source data-source-label="Date-range picker">
+          <div class="pg-preview" data-preview style="max-width:340px">
+            <div class="date-range" data-date-range>
+              <input class="form-control" placeholder="Pick a date range" aria-label="Date range">
+            </div>
+          </div>
+        </div>
+
+        <div class="pg-card" data-source data-source-label="Multi-select">
+          <div class="pg-preview" data-preview style="max-width:480px">
+            <div class="multi-select" data-multi-select data-options="Design,Engineering,Product,Marketing,Support,Sales,Operations,Legal,Finance,HR">
+              <select multiple hidden>
+                <option value="Design" selected>Design</option>
+                <option value="Engineering" selected>Engineering</option>
+                <option value="Product">Product</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Support">Support</option>
+                <option value="Sales">Sales</option>
+                <option value="Operations">Operations</option>
+                <option value="Legal">Legal</option>
+                <option value="Finance">Finance</option>
+                <option value="HR">HR</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="pg-card" data-source data-source-label="Rich text editor">
+          <div class="pg-preview" data-preview>
+            <div class="rich-text" data-rich-text>
+              <textarea hidden>&lt;p&gt;Click any button in the toolbar — &lt;strong&gt;bold&lt;/strong&gt;, &lt;em&gt;italic&lt;/em&gt;, lists, links, code blocks. Try &lt;kbd&gt;⌘B&lt;/kbd&gt; / &lt;kbd&gt;⌘I&lt;/kbd&gt; / &lt;kbd&gt;⌘K&lt;/kbd&gt;.&lt;/p&gt;</textarea>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tables -->
+      <section class="pg-block" id="tables">
+        <h2>Tables</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview>
+            <table class="table">
+              <thead><tr><th>Name</th><th>Plan</th><th>Status</th><th style="text-align:right">MRR</th></tr></thead>
+              <tbody>
+                <tr><td><div class="cell-customer"><div class="cell-avatar" style="background:var(--primary)">SK</div><span class="cell-strong">Sarah K.</span></div></td><td><span class="chip">Pro</span></td><td><span class="status status-green">Active</span></td><td class="cell-strong" style="text-align:right">$199</td></tr>
+                <tr><td><div class="cell-customer"><div class="cell-avatar" style="background:var(--azure)">MR</div><span class="cell-strong">Michael R.</span></div></td><td><span class="chip">Business</span></td><td><span class="status status-green">Active</span></td><td class="cell-strong" style="text-align:right">$499</td></tr>
+                <tr><td><div class="cell-customer"><div class="cell-avatar" style="background:var(--yellow)">EW</div><span class="cell-strong">Emily W.</span></div></td><td><span class="chip">Starter</span></td><td><span class="status status-yellow">Pending</span></td><td class="cell-strong" style="text-align:right">$49</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tabs -->
+      <section class="pg-block" id="tabs">
+        <h2>Tabs</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview>
+            <div class="chart-tabs">
+              <button class="chart-tab active">Overview</button>
+              <button class="chart-tab">Activity</button>
+              <button class="chart-tab">Settings</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Progress -->
+      <section class="pg-block" id="progress">
+        <h2>Progress</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview style="display:flex;flex-direction:column;gap:14px;align-items:stretch">
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span>Storage</span><span style="color:var(--text-muted)">62 / 100 GB</span></div>
+              <div class="progress-thin"><div class="bar" style="width:62%;background:var(--primary)"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span>API quota</span><span style="color:var(--text-muted)">87,400 / 100,000</span></div>
+              <div class="progress-thin"><div class="bar" style="width:87%;background:var(--yellow)"></div></div>
+            </div>
+            <div class="loading-bar" style="height:3px;background:var(--bg-surface-secondary);border-radius:3px;overflow:hidden"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stat tiles -->
+      <section class="pg-block" id="stats">
+        <h2>Stat tiles</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+            <div class="card"><div class="stat">
+              <div class="stat-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1v22M5 8l7-7 7 7"/></svg></div>
+              <div class="stat-content">
+                <div class="stat-label">Active users</div>
+                <div class="stat-value-row"><span class="stat-value">8,432</span><span class="stat-change up">↑ 14%</span></div>
+                <div class="stat-subtext">vs last week</div>
+              </div>
+            </div></div>
+            <div class="card"><div class="stat">
+              <div class="stat-icon red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M19 9l-5 5-4-4-3 3"/></svg></div>
+              <div class="stat-content">
+                <div class="stat-label">Churn</div>
+                <div class="stat-value-row"><span class="stat-value">2.4%</span><span class="stat-change down">↓ 0.4pp</span></div>
+                <div class="stat-subtext">improving</div>
+              </div>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Timeline -->
+      <section class="pg-block" id="timeline">
+        <h2>Timeline</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview>
+            <div class="timeline">
+              <div class="timeline-item is-primary">
+                <div class="ti-time">Just now</div>
+                <div class="ti-title">Deployment succeeded</div>
+                <div class="ti-desc">v4.0.2 in production · 28s</div>
+              </div>
+              <div class="timeline-item is-blue">
+                <div class="ti-time">14 min ago</div>
+                <div class="ti-title">PR #248 merged</div>
+              </div>
+              <div class="timeline-item is-yellow">
+                <div class="ti-time">3 hours ago</div>
+                <div class="ti-title">Review requested</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Accordion -->
+      <section class="pg-block" id="accordion">
+        <h2>Accordion</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview>
+            <div class="accordion">
+              <details class="accordion-item" open>
+                <summary class="accordion-summary">First panel
+                  <svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg>
+                </summary>
+                <div class="accordion-content">Content for the first panel goes here.</div>
+              </details>
+              <details class="accordion-item">
+                <summary class="accordion-summary">Second panel
+                  <svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg>
+                </summary>
+                <div class="accordion-content">Click the chevron to expand.</div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Empty state -->
+      <section class="pg-block" id="empty">
+        <h2>Empty state</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview>
+            <div class="empty-state">
+              <div class="empty-state-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 8l9 6 9-6"/></svg>
+              </div>
+              <div class="empty-state-title">No messages yet</div>
+              <div class="empty-state-text">When you receive messages, they'll show up here.</div>
+              <div class="empty-state-actions">
+                <button class="btn btn-primary btn-sm">Compose</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Async patterns ──────────────────────────────────────────── -->
+
+      <section class="pg-block" id="async-intro">
+        <div class="banner banner-info" style="margin-bottom:14px">
+          <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v.01M8 7v4"/></svg>
+          <div class="banner-body"><strong>Async patterns.</strong> The four states every list/grid passes through: <em>loading → loaded</em>, or <em>loading → empty</em>, or <em>loading → error</em>. Wire all four and your app feels solid even on flaky networks. The data-adapter pattern in <code>src/v4/data-adapter.js</code> hands you the data; the components below are what you render in each state.</div>
+        </div>
+      </section>
+
+      <section class="pg-block" id="skeleton-table">
+        <h2>Skeleton table</h2>
+        <p style="font-size:13px;color:var(--text-secondary);margin:0 0 12px;line-height:1.55">Render placeholder rows while data loads. Width variation across columns prevents the "jelly bean" look. Fades in via the <code>.skeleton</code> shimmer animation defined in <code>_components.scss</code>.</p>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview>
+            <table class="table" style="width:100%">
+              <thead><tr><th>Customer</th><th>Plan</th><th>Status</th><th style="text-align:right">MRR</th></tr></thead>
+              <tbody>
+                <tr><td><span class="skeleton skeleton-text" style="width:65%"></span></td><td><span class="skeleton skeleton-text" style="width:50%"></span></td><td><span class="skeleton skeleton-text" style="width:40%"></span></td><td><span class="skeleton skeleton-text" style="width:30%;display:inline-block"></span></td></tr>
+                <tr><td><span class="skeleton skeleton-text" style="width:80%"></span></td><td><span class="skeleton skeleton-text" style="width:45%"></span></td><td><span class="skeleton skeleton-text" style="width:55%"></span></td><td><span class="skeleton skeleton-text" style="width:35%;display:inline-block"></span></td></tr>
+                <tr><td><span class="skeleton skeleton-text" style="width:55%"></span></td><td><span class="skeleton skeleton-text" style="width:60%"></span></td><td><span class="skeleton skeleton-text" style="width:50%"></span></td><td><span class="skeleton skeleton-text" style="width:40%;display:inline-block"></span></td></tr>
+                <tr><td><span class="skeleton skeleton-text" style="width:70%"></span></td><td><span class="skeleton skeleton-text" style="width:55%"></span></td><td><span class="skeleton skeleton-text" style="width:42%"></span></td><td><span class="skeleton skeleton-text" style="width:32%;display:inline-block"></span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="pg-block" id="skeleton-tiles">
+        <h2>Skeleton tiles</h2>
+        <p style="font-size:13px;color:var(--text-secondary);margin:0 0 12px;line-height:1.55">Use for card grids — dashboards, file managers, product galleries. Avatar circle + headline + 2 lines is the canonical shape.</p>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+            <div class="card" style="padding:16px">
+              <span class="skeleton skeleton-circle" style="width:32px;height:32px;margin-bottom:10px"></span>
+              <span class="skeleton skeleton-text skeleton-text-lg" style="width:60%"></span>
+              <span class="skeleton skeleton-text" style="width:90%"></span>
+              <span class="skeleton skeleton-text" style="width:75%;margin-bottom:0"></span>
+            </div>
+            <div class="card" style="padding:16px">
+              <span class="skeleton skeleton-circle" style="width:32px;height:32px;margin-bottom:10px"></span>
+              <span class="skeleton skeleton-text skeleton-text-lg" style="width:50%"></span>
+              <span class="skeleton skeleton-text" style="width:85%"></span>
+              <span class="skeleton skeleton-text" style="width:65%;margin-bottom:0"></span>
+            </div>
+            <div class="card" style="padding:16px">
+              <span class="skeleton skeleton-circle" style="width:32px;height:32px;margin-bottom:10px"></span>
+              <span class="skeleton skeleton-text skeleton-text-lg" style="width:70%"></span>
+              <span class="skeleton skeleton-text" style="width:80%"></span>
+              <span class="skeleton skeleton-text" style="width:55%;margin-bottom:0"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pg-block" id="async-list">
+        <h2>List lifecycle — interactive</h2>
+        <p style="font-size:13px;color:var(--text-secondary);margin:0 0 12px;line-height:1.55">Click a button below to simulate each state. This is exactly what <a href="orders.html?api=1">orders.html</a> and the inbox use under the hood.</p>
+        <div class="pg-card">
+          <div class="pg-preview" data-preview style="flex-direction:column;align-items:stretch;gap:0;padding:0">
+            <div style="display:flex;gap:6px;padding:14px 16px;border-bottom:1px solid var(--border-color-light);flex-wrap:wrap">
+              <button class="btn btn-outline btn-sm" data-lifecycle="success">Loading → success</button>
+              <button class="btn btn-outline btn-sm" data-lifecycle="empty">Loading → empty</button>
+              <button class="btn btn-outline btn-sm" data-lifecycle="error">Loading → error</button>
+              <button class="btn btn-ghost btn-sm" data-lifecycle="reset">Reset</button>
+            </div>
+            <div id="async-list-host" style="padding:14px 16px;min-height:200px"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pg-block" id="submit-spinner">
+        <h2>Submit spinner</h2>
+        <p style="font-size:13px;color:var(--text-secondary);margin:0 0 12px;line-height:1.55">Disable the button + swap label for a spinner during the request. Re-enable + restore label when it resolves. Click below to simulate a 1.5s submit.</p>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview>
+            <form id="submit-spinner-form" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap" onsubmit="return false">
+              <input class="form-control" placeholder="Type something" style="width:260px" aria-label="Sample input" required>
+              <button type="submit" class="btn btn-primary" data-pg-submit>
+                <span class="btn-spinner spinner spinner-sm" hidden style="border-top-color:#fff;margin-right:6px"></span>
+                <span data-pg-submit-label>Save</span>
+              </button>
+              <span style="font-size:12px;color:var(--text-muted)">↑ Click "Save"</span>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="pg-block" id="banners">
+        <h2>Banners — feedback at the page level</h2>
+        <p style="font-size:13px;color:var(--text-secondary);margin:0 0 12px;line-height:1.55">For things the user needs to see and may want to act on (failed payment, quota near limit). For ephemeral feedback (saved, copied, deleted) use a toast instead — see <a href="general_elements.html#toasts">general elements</a>.</p>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview style="flex-direction:column;align-items:stretch;gap:10px">
+            <div class="banner">
+              <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M5 8l2 2 4-4"/></svg>
+              <div class="banner-body"><strong>Saved.</strong> Changes are live.</div>
+            </div>
+            <div class="banner banner-info">
+              <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v.01M8 7v4"/></svg>
+              <div class="banner-body"><strong>Heads up.</strong> Maintenance window scheduled for Friday 02:00 UTC.</div>
+            </div>
+            <div class="banner banner-warning">
+              <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1l7 13H1L8 1z"/><path d="M8 6v4"/></svg>
+              <div class="banner-body"><strong>API quota at 87%.</strong> You'll hit the cap by Friday.</div>
+              <div class="banner-actions"><button class="btn btn-outline btn-sm">Upgrade plan</button></div>
+            </div>
+            <div class="banner banner-danger">
+              <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M5 5l6 6M11 5l-6 6"/></svg>
+              <div class="banner-body"><strong>Payment failed.</strong> Update your card to keep your subscription active.</div>
+              <div class="banner-actions"><button class="btn btn-outline btn-sm">Update card</button></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pg-block" id="helpers-intro">
+        <h2>Markup helpers — stop hand-writing scaffolds</h2>
+        <p style="font-size:13px;color:var(--text-secondary);margin:0 0 8px;line-height:1.55">For pages that build content from data (orders, inbox threads, kanban cards…) the boilerplate adds up. <code>src/v4/markup.js</code> exposes pure functions that return HTML strings — no framework, no virtual DOM. Auto-escapes user content. Drop the result into <code>innerHTML</code> or interpolate into a template literal.</p>
+        <p style="font-size:13px;color:var(--text-secondary);margin:0 0 12px;line-height:1.55">Each helper below shows the call site (top) and the rendered output (bottom).</p>
+      </section>
+
+      <section class="pg-block" id="helpers-stat">
+        <h3 style="margin:0 0 10px;font-size:15px">statTile()</h3>
+        <pre class="pg-code" style="margin-bottom:12px"><code>import { statTile } from '/src/v4/markup.js';
+
+document.querySelector('#stats').innerHTML = [
+  statTile({ label: 'Revenue', value: '$84,520', color: 'green',
+             change: { pct: '+18%', direction: 'up' }, subtext: '$3,218 today' }),
+  statTile({ label: 'Pending', value: '42', color: 'yellow',
+             change: { pct: '-3%', direction: 'down' }, subtext: '5 awaiting payment' })
+].join('');</code></pre>
+        <div id="helpers-stat-host" class="row col-2" style="gap:12px"></div>
+      </section>
+
+      <section class="pg-block" id="helpers-status">
+        <h3 style="margin:0 0 10px;font-size:15px">statusBadge()</h3>
+        <pre class="pg-code" style="margin-bottom:12px"><code>statusBadge('Paid', 'green')
+statusBadge('Pending', 'yellow')
+statusBadge('Failed', 'red')</code></pre>
+        <div id="helpers-status-host" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+      </section>
+
+      <section class="pg-block" id="helpers-customer">
+        <h3 style="margin:0 0 10px;font-size:15px">customerCell() — table cell with avatar + name</h3>
+        <pre class="pg-code" style="margin-bottom:12px"><code>tbody.innerHTML = orders.map((o) =&gt;
+  `&lt;tr&gt;&lt;td&gt;${customerCell({ name: o.name, avatarColor: o.color })}&lt;/td&gt;&lt;/tr&gt;`
+).join('');</code></pre>
+        <table class="table" style="max-width:340px"><tbody id="helpers-customer-host"></tbody></table>
+      </section>
+
+      <section class="pg-block" id="helpers-activity">
+        <h3 style="margin:0 0 10px;font-size:15px">activityItem() — feeds, audit logs</h3>
+        <pre class="pg-code" style="margin-bottom:12px"><code>const html = items.map((i) =&gt; activityItem({
+  initials: i.initials, avatarBg: i.bg,
+  bodyHtml: `&lt;strong&gt;${escapeHtml(i.user)}&lt;/strong&gt; ${escapeHtml(i.text)}`,
+  time: i.time
+})).join('');
+container.innerHTML = `&lt;ul class="activity-list"&gt;${html}&lt;/ul&gt;`;</code></pre>
+        <ul class="activity-list" id="helpers-activity-host" style="max-width:420px"></ul>
+      </section>
+
+      <section class="pg-block" id="helpers-visitor">
+        <h3 style="margin:0 0 10px;font-size:15px">visitorRow() — distribution bars</h3>
+        <pre class="pg-code" style="margin-bottom:12px"><code>const html = data.map((d) =&gt;
+  visitorRow({ name: d.country, pct: d.pct, flag: d.flag })
+).join('');</code></pre>
+        <div id="helpers-visitor-host" style="max-width:420px"></div>
+      </section>
+
+      <section class="pg-block" id="helpers-empty">
+        <h3 style="margin:0 0 10px;font-size:15px">emptyState() — fallback for no results</h3>
+        <pre class="pg-code" style="margin-bottom:12px"><code>container.innerHTML = emptyState({
+  title: 'No orders yet',
+  desc: "Orders will appear here once your first customer checks out.",
+  iconHtml: '&lt;svg ...&gt;&lt;/svg&gt;',
+  actionHtml: '&lt;button class="btn btn-primary"&gt;Create test order&lt;/button&gt;'
+});</code></pre>
+        <div class="card"><div class="card-body" id="helpers-empty-host"></div></div>
+      </section>
+
+    </div>
+  </div>
+@endverbatim
+@endsection
+
+@push('scripts')
+@verbatim
+<script type="module">
+import { showToast } from '/src/v4/toast.js';
+import { statTile, statusBadge, customerCell, activityItem, visitorRow, emptyState, escapeHtml } from '/src/v4/markup.js';
+
+// Syntax highlighting is playground-only: dynamically imported so it lands in
+// its own chunk and adds nothing to the bundle every other page loads.
+const hl = import('/src/v4/highlight.js');
+const paint = (el) => hl.then((m) => m.paintBlock(el)).catch(() => {});
+
+// Build a code-source row under each [data-source] card.
+function indent(html) {
+  // Lightly format the HTML for display: collapse whitespace + indent.
+  // (Production HTML is already nicely indented in the source — but we
+  // capture from the live DOM, so re-format for readability.)
+  return html
+    .replace(/></g, '>\n<')
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .join('\n');
+}
+
+document.querySelectorAll('[data-source]').forEach((card) => {
+  const preview = card.querySelector('[data-preview]');
+  if (!preview) return;
+
+  const originalHtml = preview.innerHTML.trim();
+  const label = card.dataset.sourceLabel || '';
+  const code = indent(originalHtml);
+  const block = document.createElement('div');
+  block.className = 'pg-source';
+  block.innerHTML = `
+    <div class="pg-source-head">
+      <span class="pg-source-label">${label || 'HTML'} <span class="pg-edit-hint">— edit to preview</span></span>
+      <div style="display:flex;gap:6px">
+        <button type="button" class="btn btn-outline btn-sm pg-reset" hidden>↺ Reset</button>
+        <button type="button" class="btn btn-outline btn-sm pg-copy" aria-label="Copy code">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="6" width="8" height="8" rx="1.5"/><path d="M3 10V3h7"/></svg>
+          Copy
+        </button>
+      </div>
+    </div>
+    <pre class="pg-code pg-code-edit" contenteditable="plaintext-only" spellcheck="false" aria-label="HTML source — edit to update preview"></pre>
+  `;
+  const codeEl = block.querySelector('.pg-code');
+  const resetBtn = block.querySelector('.pg-reset');
+  codeEl.textContent = code;
+  card.appendChild(block);
+  paint(codeEl);
+
+  // Live edit: debounce 250ms, set preview.innerHTML from textContent.
+  // Browser auto-corrects malformed HTML — we don't try to validate.
+  let editTimer;
+  codeEl.addEventListener('input', () => {
+    clearTimeout(editTimer);
+    editTimer = setTimeout(() => {
+      preview.innerHTML = codeEl.textContent;
+      resetBtn.hidden = false;
+      paint(codeEl);
+    }, 250);
+  });
+
+  resetBtn.addEventListener('click', () => {
+    preview.innerHTML = originalHtml;
+    codeEl.textContent = indent(originalHtml);
+    resetBtn.hidden = true;
+    paint(codeEl);
+  });
+
+  block.querySelector('.pg-copy').addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(codeEl.textContent);
+      showToast('Copied to clipboard', { variant: 'success' });
+    } catch (_e) {
+      showToast('Copy failed — select and Ctrl+C', { variant: 'error' });
+    }
+  });
+});
+
+// Static (non-editable) samples elsewhere on the page.
+hl.then((m) => document.querySelectorAll('.pg-code:not(.pg-code-edit)').forEach(m.paintBlock)).catch(() => {});
+
+// Scrollspy for the left rail.
+const links = [...document.querySelectorAll('.pg-nav-link')];
+const sections = [...document.querySelectorAll('.pg-block')];
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      links.forEach((l) => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+sections.forEach((s) => observer.observe(s));
+
+// Smooth scroll
+links.forEach((a) => a.addEventListener('click', (e) => {
+  e.preventDefault();
+  const t = document.querySelector(a.getAttribute('href'));
+  if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}));
+
+// ── Async list lifecycle simulator ───────────────────────────────────
+// Demonstrates the four states a real list goes through: loading → loaded /
+// empty / error. Buttons let viewers trigger each transition.
+const lifecycleHost = document.getElementById('async-list-host');
+if (lifecycleHost) {
+  const SAMPLE = [
+    { name: 'Sarah K.',      plan: 'Pro',      status: 'Active',  mrr: '$199' },
+    { name: 'Michael R.',    plan: 'Business', status: 'Active',  mrr: '$499' },
+    { name: 'Emily W.',      plan: 'Starter',  status: 'Pending', mrr: '$49'  },
+    { name: 'Diego R.',      plan: 'Pro',      status: 'Active',  mrr: '$199' }
+  ];
+  const renderIdle = () => {
+    lifecycleHost.innerHTML = `<div style="text-align:center;color:var(--text-muted);font-size:13px;padding:60px 0">Click a button above to simulate a state.</div>`;
+  };
+  const renderLoading = () => {
+    const row = `<tr>${'<td><span class="skeleton skeleton-text" style="width:70%"></span></td>'.repeat(4)}</tr>`;
+    lifecycleHost.innerHTML = `
+      <table class="table" style="width:100%">
+        <thead><tr><th>Customer</th><th>Plan</th><th>Status</th><th style="text-align:right">MRR</th></tr></thead>
+        <tbody>${row.repeat(4)}</tbody>
+      </table>`;
+  };
+  const renderLoaded = () => {
+    lifecycleHost.innerHTML = `
+      <table class="table" style="width:100%">
+        <thead><tr><th>Customer</th><th>Plan</th><th>Status</th><th style="text-align:right">MRR</th></tr></thead>
+        <tbody>${SAMPLE.map((r) => `
+          <tr>
+            <td class="cell-strong">${r.name}</td>
+            <td><span class="chip">${r.plan}</span></td>
+            <td><span class="status status-${r.status === 'Active' ? 'green' : 'yellow'}">${r.status}</span></td>
+            <td class="cell-strong" style="text-align:right">${r.mrr}</td>
+          </tr>`).join('')}
+        </tbody>
+      </table>`;
+  };
+  const renderEmpty = () => {
+    lifecycleHost.innerHTML = `
+      <div class="empty-state" style="padding:32px 24px">
+        <div class="empty-state-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M16 16l4 4"/></svg>
+        </div>
+        <div class="empty-state-title">No customers found</div>
+        <div class="empty-state-text">Try changing your filters, or create your first customer to get started.</div>
+        <div class="empty-state-actions">
+          <button class="btn btn-primary btn-sm">+ New customer</button>
+        </div>
+      </div>`;
+  };
+  const renderError = (retry) => {
+    lifecycleHost.innerHTML = `
+      <div class="banner banner-danger">
+        <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M5 5l6 6M11 5l-6 6"/></svg>
+        <div class="banner-body"><strong>Couldn't load customers.</strong> Check your network connection and try again.</div>
+        <div class="banner-actions"><button class="btn btn-outline btn-sm" id="lifecycle-retry">Retry</button></div>
+      </div>`;
+    document.getElementById('lifecycle-retry')?.addEventListener('click', retry);
+  };
+
+  renderIdle();
+
+  document.querySelectorAll('[data-lifecycle]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const state = btn.dataset.lifecycle;
+      if (state === 'reset') { renderIdle(); return; }
+      renderLoading();
+      // Real fetch latency simulation. Devs reading this should note the
+      // pattern: render skeleton synchronously, then resolve the data, then
+      // render the final state. Never go from idle straight to loaded.
+      setTimeout(() => {
+        if (state === 'success') renderLoaded();
+        else if (state === 'empty') renderEmpty();
+        else if (state === 'error') {
+          renderError(() => {
+            renderLoading();
+            setTimeout(renderLoaded, 700); // retry "succeeds"
+          });
+        }
+      }, 700);
+    });
+  });
+}
+
+// ── Submit-spinner pattern ───────────────────────────────────────────
+// Disable the button and swap the label for a spinner during the request,
+// then restore on resolve. Keeps the user from double-submitting and gives
+// clear "something is happening" feedback.
+const submitForm = document.getElementById('submit-spinner-form');
+if (submitForm) {
+  submitForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = submitForm.querySelector('[data-pg-submit]');
+    const spinner = btn.querySelector('.btn-spinner');
+    const label = btn.querySelector('[data-pg-submit-label]');
+    const original = label.textContent;
+    btn.disabled = true;
+    spinner.hidden = false;
+    label.textContent = 'Saving…';
+    try {
+      // Simulate a 1.5s API call. Replace with await fetch(...)
+      await new Promise((r) => setTimeout(r, 1500));
+      showToast('Saved ✓', { variant: 'success' });
+      submitForm.reset();
+    } catch (err) {
+      showToast('Failed to save', { variant: 'error' });
+    } finally {
+      btn.disabled = false;
+      spinner.hidden = true;
+      label.textContent = original;
+    }
+  });
+}
+
+// ── Markup helpers — populate the live previews ──────────────────────
+const ICON_REVENUE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>';
+const ICON_CLOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>';
+
+const statHost = document.getElementById('helpers-stat-host');
+if (statHost) {
+  statHost.innerHTML = [
+    statTile({ label: 'Revenue', value: '$84,520', color: 'green', iconHtml: ICON_REVENUE,
+               change: { pct: '+18%', direction: 'up' }, subtext: '$3,218 today' }),
+    statTile({ label: 'Pending', value: '42', color: 'yellow', iconHtml: ICON_CLOCK,
+               change: { pct: '-3%', direction: 'down' }, subtext: '5 awaiting payment' })
+  ].join('');
+}
+
+const statusHost = document.getElementById('helpers-status-host');
+if (statusHost) {
+  statusHost.innerHTML = [
+    statusBadge('Paid', 'green'),
+    statusBadge('Processing', 'blue'),
+    statusBadge('Pending', 'yellow'),
+    statusBadge('Failed', 'red'),
+    statusBadge('Archived', 'gray')
+  ].join('');
+}
+
+const customerHost = document.getElementById('helpers-customer-host');
+if (customerHost) {
+  const orders = [
+    { name: 'Sarah Klein',   color: 'var(--primary)' },
+    { name: 'Michael Reese', color: 'var(--blue)' },
+    { name: 'Emily Wang',    color: 'var(--yellow)' }
+  ];
+  customerHost.innerHTML = orders.map((o) =>
+    `<tr><td>${customerCell({ name: o.name, avatarColor: o.color })}</td></tr>`
+  ).join('');
+}
+
+const activityHost = document.getElementById('helpers-activity-host');
+if (activityHost) {
+  const items = [
+    { user: 'Sarah K.',  text: 'placed a new order for $245.00', initials: 'SK', bg: 'linear-gradient(135deg,var(--primary),var(--primary-dk))', time: '2 min ago' },
+    { user: 'Michael R.', text: 'registered a new account',       initials: 'MR', bg: 'linear-gradient(135deg,var(--blue),#0550a0)',           time: '18 min ago' },
+    { user: 'Payment',    text: 'processed — Invoice #4521',      initials: 'PA', bg: 'linear-gradient(135deg,var(--green),#1a8a32)',          time: '45 min ago' }
+  ];
+  activityHost.innerHTML = items.map((i) => activityItem({
+    initials: i.initials, avatarBg: i.bg,
+    bodyHtml: `<strong>${escapeHtml(i.user)}</strong> ${escapeHtml(i.text)}`,
+    time: i.time
+  })).join('');
+}
+
+const visitorHost = document.getElementById('helpers-visitor-host');
+if (visitorHost) {
+  const data = [
+    { flag: '🇺🇸', country: 'United States', pct: 33 },
+    { flag: '🇫🇷', country: 'France',        pct: 27 },
+    { flag: '🇩🇪', country: 'Germany',       pct: 16 },
+    { flag: '🇪🇸', country: 'Spain',         pct: 11 }
+  ];
+  visitorHost.innerHTML = data.map((d) =>
+    visitorRow({ name: d.country, pct: d.pct, flag: d.flag })
+  ).join('');
+}
+
+const emptyHost = document.getElementById('helpers-empty-host');
+if (emptyHost) {
+  emptyHost.innerHTML = emptyState({
+    title: 'No orders yet',
+    desc: "Orders will appear here once your first customer checks out.",
+    iconHtml: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>',
+    actionHtml: '<button class="btn btn-primary btn-sm">Create test order</button>'
+  });
+}
+</script>
+
+<style>
+.playground-layout {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+  margin-top: 16px;
+}
+.pg-nav {
+  position: sticky;
+  top: 76px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.pg-nav-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  padding: 4px 12px 8px;
+}
+.pg-nav-link {
+  display: block;
+  padding: 6px 12px;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: background 100ms, color 100ms;
+}
+.pg-nav-link:hover { background: var(--bg-surface-secondary); color: var(--text); text-decoration: none; }
+.pg-nav-link.active {
+  background: var(--primary-lt);
+  color: var(--primary);
+  font-weight: var(--font-weight-medium);
+}
+.pg-content { display: flex; flex-direction: column; gap: 28px; }
+.pg-block h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 12px;
+  letter-spacing: -0.2px;
+}
+.pg-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.pg-preview {
+  padding: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  background: var(--bg-surface-secondary);
+}
+.pg-source {
+  border-top: 1px solid var(--border-color-light);
+  background: var(--bg-surface);
+}
+.pg-source-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--border-color-light);
+}
+.pg-source-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+.pg-code {
+  /* Source code always reads left-to-right, even when the page is dir="rtl" —
+     otherwise the lines right-align and the bracket order reads backwards. */
+  direction: ltr;
+  text-align: left;
+  margin: 0;
+  padding: 14px 16px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--bg-surface);
+  overflow-x: auto;
+  max-height: 320px;
+  overflow-y: auto;
+  white-space: pre;
+}
+.pg-code-edit {
+  cursor: text;
+  outline: none;
+  transition: background 120ms;
+}
+.pg-code-edit:hover { background: var(--bg-surface-secondary); }
+.pg-code-edit:focus {
+  background: var(--bg-surface-secondary);
+  box-shadow: inset 3px 0 0 var(--primary);
+}
+/* Syntax highlighting tokens — scoped to this page so the shared stylesheet
+   (loaded on all 58 pages) stays exactly the size it was. */
+.pg-code {
+  --tok-tag: #1f6f9f;
+  --tok-attr: #7a45b8;
+  --tok-value: #167f57;
+  --tok-comment: var(--text-muted);
+  --tok-punct: var(--text-disabled);
+}
+[data-theme="dark"] .pg-code {
+  --tok-tag: #79b8e3;
+  --tok-attr: #c4a2f5;
+  --tok-value: #5ac9a0;
+}
+.pg-code .tok-tag { color: var(--tok-tag); }
+.pg-code .tok-attr { color: var(--tok-attr); }
+.pg-code .tok-value { color: var(--tok-value); }
+.pg-code .tok-comment { color: var(--tok-comment); font-style: italic; }
+.pg-code .tok-punct { color: var(--tok-punct); }
+.pg-edit-hint {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text-disabled);
+  margin-left: 4px;
+}
+.pg-card + .pg-card { margin-top: 14px; }
+@media (max-width: 900px) {
+  .playground-layout { grid-template-columns: 1fr; }
+  .pg-nav { position: static; flex-direction: row; flex-wrap: wrap; }
+  .pg-nav-label { width: 100%; padding: 0 0 4px; }
+  .pg-nav-link { padding: 5px 10px; font-size: 12px; }
+}
+</style>
+@endverbatim
+@endpush

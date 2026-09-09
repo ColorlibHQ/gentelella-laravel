@@ -1,0 +1,76 @@
+{{--
+    GENERATED FILE — DO NOT EDIT.
+
+    Source: production/pricing_tables.html in ColorlibHQ/gentelella.
+    Regenerate: npm run export:demo
+
+    Static markup: the body sits in a verbatim block and compiles to itself.
+--}}
+@extends('gentelella::page')
+
+@section('title', 'Pricing')
+@section('page_key', 'pricing')
+@section('breadcrumb', 'Home > Pricing')
+
+@section('content')
+@verbatim
+<div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Plans</div>
+        <h1 class="page-title">Pricing</h1>
+      </div>
+      <div class="page-actions">
+        <div class="chart-tabs">
+          <button class="chart-tab active">Monthly</button>
+          <button class="chart-tab">Annual <span style="margin-left:4px;color:var(--green);font-weight:600">−20%</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-3">
+    <div class="pricing-tier">
+      <div class="name">Starter</div>
+      <div><span class="price">$0</span><small>/month</small></div>
+      <div class="desc">Everything you need to evaluate the platform on a small project.</div>
+      <ul>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> Up to 3 users</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> 5 GB storage</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> Community support</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> Core dashboards</li>
+      </ul>
+      <button class="btn btn-outline" style="justify-content:center;height:36px">Get started</button>
+    </div>
+
+    <div class="pricing-tier popular">
+      <div class="name">Pro</div>
+      <div><span class="price">$29</span><small>/user / month</small></div>
+      <div class="desc">For growing teams that need more power, integrations, and reporting.</div>
+      <ul>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> Unlimited users</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> 100 GB storage</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> Priority email support</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> Advanced reporting</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> 50+ integrations</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> SSO via Google / GitHub</li>
+      </ul>
+      <button class="btn btn-primary" style="justify-content:center;height:36px">Start 14-day trial</button>
+    </div>
+
+    <div class="pricing-tier">
+      <div class="name">Enterprise</div>
+      <div><span class="price">Custom</span></div>
+      <div class="desc">Dedicated infrastructure, audit logs, and a named CSM.</div>
+      <ul>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> Everything in Pro</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> SAML / SCIM</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> SOC 2 + DPA</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> Dedicated success mgr</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> 99.99% SLA</li>
+      </ul>
+      <button class="btn btn-outline" style="justify-content:center;height:36px">Talk to sales</button>
+    </div>
+  </div>
+@endverbatim
+@endsection

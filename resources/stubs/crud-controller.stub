@@ -1,0 +1,25 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use ColorlibHQ\Gentelella\Crud\ResourceController;
+use {{ model }};
+
+class {{ class }} extends ResourceController
+{
+    protected function setup(): void
+    {
+        $this->panel
+            ->model({{ modelBasename }}::class)
+            ->route('{{ route }}')
+            ->entity('{{ singular }}', '{{ plural }}')
+            ->columns([
+{{ columns }}
+            ])
+            ->fields([
+{{ fields }}
+            ]);
+    }
+}

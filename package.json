@@ -1,0 +1,12 @@
+{
+  "name": "@colorlibhq/gentelella-laravel-dev",
+  "private": true,
+  "type": "module",
+  "description": "Dev-only tooling for the package. Not published; the package itself is installed with Composer.",
+  "scripts": {
+    "smoke": "node scripts/browser-smoke.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.62.1"
+  }
+}

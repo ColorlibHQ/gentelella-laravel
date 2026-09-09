@@ -1,0 +1,59 @@
+{{--
+    GENERATED FILE — DO NOT EDIT.
+
+    Source: production/level2.html in ColorlibHQ/gentelella.
+    Regenerate: npm run export:demo
+
+    Static markup: the body sits in a verbatim block and compiles to itself.
+--}}
+@extends('gentelella::page')
+
+@section('title', 'Sub-page')
+@section('page_key', 'level2')
+@section('breadcrumb', 'Home > Pages > Section > Sub-page')
+
+@section('content')
+@verbatim
+<div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Documentation</div>
+        <h1 class="page-title">Nested sub-page</h1>
+      </div>
+      <div class="page-actions">
+        <button class="btn btn-outline">← Back to section</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-4-8">
+    <!-- Inner-page nav -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">In this section</div></div>
+      <div class="card-body" style="padding:8px">
+        <a href="#" class="nav-link" style="color:var(--text-secondary);background:var(--primary-lt)">Overview</a>
+        <a href="#" class="nav-link" style="color:var(--text-secondary)">Quick start</a>
+        <a href="#" class="nav-link" style="color:var(--text-secondary)">Configuration</a>
+        <a href="#" class="nav-link" style="color:var(--text-secondary)">Components</a>
+        <a href="#" class="nav-link" style="color:var(--text-secondary)">API reference</a>
+        <a href="#" class="nav-link" style="color:var(--text-secondary)">Migration guide</a>
+        <a href="#" class="nav-link" style="color:var(--text-secondary)">Changelog</a>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">Section overview</div></div>
+      <div class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:1.7">
+        <p>This page demonstrates a nested layout — a sub-page within a section, with its own inner navigation. The breadcrumb in the topbar reflects the depth: <code style="font-family:var(--font-mono);font-size:11.5px;background:var(--bg-surface-secondary);padding:1px 5px;border-radius:3px">Home › Pages › Section › Sub-page</code>.</p>
+        <p style="margin-top:10px">In the v4 layout, you can nest as deeply as you need — the breadcrumb is driven by the <code style="font-family:var(--font-mono);font-size:11.5px;background:var(--bg-surface-secondary);padding:1px 5px;border-radius:3px">data-breadcrumb</code> attribute on <code style="font-family:var(--font-mono);font-size:11.5px;background:var(--bg-surface-secondary);padding:1px 5px;border-radius:3px">&lt;body&gt;</code>:</p>
+        <pre style="background:var(--bg-surface-secondary);padding:12px;border-radius:var(--radius);font-size:11.5px;font-family:var(--font-mono);color:var(--text);margin-top:8px;overflow-x:auto">&lt;body data-breadcrumb="Home &gt; Pages &gt; Section &gt; Sub-page"&gt;</pre>
+        <p style="margin-top:14px">Each segment is split on <code style="font-family:var(--font-mono);font-size:11.5px;background:var(--bg-surface-secondary);padding:1px 5px;border-radius:3px">&gt;</code> and rendered with separators. The last segment is the current page — never a link, always marked active.</p>
+        <p style="margin-top:10px">Every earlier segment turns into a link when it has somewhere to go. A label matching a sidebar entry resolves on its own — <code style="font-family:var(--font-mono);font-size:11.5px;background:var(--bg-surface-secondary);padding:1px 5px;border-radius:3px">Forms</code> links to <code style="font-family:var(--font-mono);font-size:11.5px;background:var(--bg-surface-secondary);padding:1px 5px;border-radius:3px">form.html</code> with no extra markup. For anything else, name the target after a <code style="font-family:var(--font-mono);font-size:11.5px;background:var(--bg-surface-secondary);padding:1px 5px;border-radius:3px">|</code>:</p>
+        <pre style="background:var(--bg-surface-secondary);padding:12px;border-radius:var(--radius);font-size:11.5px;font-family:var(--font-mono);color:var(--text);margin-top:8px;overflow-x:auto">&lt;body data-breadcrumb="Home &gt; Projects|projects.html &gt; Acme Website Redesign"&gt;</pre>
+        <p style="margin-top:14px">Segments with neither a match nor an explicit target stay plain text — which is what <code style="font-family:var(--font-mono);font-size:11.5px;background:var(--bg-surface-secondary);padding:1px 5px;border-radius:3px">Pages</code> and <code style="font-family:var(--font-mono);font-size:11.5px;background:var(--bg-surface-secondary);padding:1px 5px;border-radius:3px">Section</code> are doing in this page's own breadcrumb.</p>
+      </div>
+    </div>
+  </div>
+@endverbatim
+@endsection

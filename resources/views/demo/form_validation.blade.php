@@ -1,0 +1,109 @@
+{{--
+    GENERATED FILE — DO NOT EDIT.
+
+    Source: production/form_validation.html in ColorlibHQ/gentelella.
+    Regenerate: npm run export:demo
+
+    Static markup: the body sits in a verbatim block and compiles to itself.
+--}}
+@extends('gentelella::page')
+
+@section('title', 'Form validation')
+@section('page_key', 'form-validation')
+@section('breadcrumb', 'Home > Forms > Validation')
+
+@section('content')
+@verbatim
+<div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Forms</div>
+        <h1 class="page-title">Validation states</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Native validation</div></div>
+      <div class="card-body">
+        <form id="validate-form" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="vEmail">Email <span class="required">*</span></label>
+            <input id="vEmail" type="email" class="form-control" required placeholder="you@company.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="vUrl">Website</label>
+            <input id="vUrl" type="url" class="form-control" placeholder="https://…">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="vPwd">Password <span class="required">*</span></label>
+            <input id="vPwd" type="password" class="form-control" required minlength="8" placeholder="Min 8 characters">
+            <div class="form-help">Must be at least 8 characters.</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="vAge">Age</label>
+            <input id="vAge" type="number" class="form-control" min="18" max="120" placeholder="18+">
+          </div>
+          <div class="form-actions right">
+            <button type="reset" class="btn btn-outline">Reset</button>
+            <button type="submit" class="btn btn-primary">Validate</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">All states</div></div>
+      <div class="card-body">
+        <div class="form-group">
+          <label class="form-label">Default</label>
+          <input class="form-control" placeholder="Untouched" aria-label="Default state">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Valid</label>
+          <input class="form-control" aria-label="Valid state" value="aigars@colorlib.com" style="border-color:var(--green);box-shadow:0 0 0 3px var(--green-lt)">
+          <div class="form-help" style="color:var(--green)">Looks good.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Invalid</label>
+          <input class="form-control is-invalid" value="not-an-email" aria-label="Invalid state">
+          <div class="form-error">Please enter a valid email.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Disabled</label>
+          <input class="form-control" disabled value="Read-only field" aria-label="Disabled field">
+        </div>
+        <div class="form-group">
+          <label class="form-label">With helper</label>
+          <input class="form-control" placeholder="Enter slug" aria-label="With helper">
+          <div class="form-help">Lowercase letters, numbers, and hyphens only.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endverbatim
+@endsection
+
+@push('scripts')
+@verbatim
+<script type="module">
+document.getElementById('validate-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const form = e.target;
+  form.querySelectorAll('.form-control').forEach((el) => {
+    el.classList.remove('is-invalid');
+    const next = el.nextElementSibling;
+    if (next && next.classList.contains('form-error')) next.remove();
+    if (!el.checkValidity()) {
+      el.classList.add('is-invalid');
+      const msg = document.createElement('div');
+      msg.className = 'form-error';
+      msg.textContent = el.validationMessage;
+      el.after(msg);
+    }
+  });
+});
+</script>
+@endverbatim
+@endpush

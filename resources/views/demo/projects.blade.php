@@ -1,0 +1,95 @@
+{{--
+    GENERATED FILE — DO NOT EDIT.
+
+    Source: production/projects.html in ColorlibHQ/gentelella.
+    Regenerate: npm run export:demo
+
+    Static markup: the body sits in a verbatim block and compiles to itself.
+--}}
+@extends('gentelella::page')
+
+@section('title', 'Projects')
+@section('page_key', 'projects')
+@section('breadcrumb', 'Home > Projects')
+
+@section('content')
+@verbatim
+<div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Workspace</div>
+        <h1 class="page-title">Projects</h1>
+      </div>
+      <div class="page-actions">
+        <button class="btn btn-outline">Filters</button>
+        <button class="btn btn-primary">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h8M8 4v8"/></svg>
+          New project
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-3" id="projects-grid"></div>
+@endverbatim
+@endsection
+
+@push('scripts')
+@verbatim
+<script type="module">
+const projects = [
+  ['Acme Website Redesign',   'Acme Corp',      'On track',     'green',    'Refresh of the public marketing site with new brand identity.', 78, 'Apr 30',  ['SK','MR','EW']],
+  ['Mobile App v2',           'Globex Inc',     'At risk',      'yellow',   'Major rewrite of the iOS/Android app on shared React Native core.', 42, 'Jun 15', ['MK','LP','DR','YT']],
+  ['Internal Dashboard',      'Initech',        'On track',     'green',    'New analytics dashboard replacing the legacy Tableau setup.', 91, 'May 12',  ['TH','MR']],
+  ['Q2 Marketing Campaign',   'Acme Corp',      'On track',     'green',    'Cross-channel campaign for the new product line launch.', 33, 'May 28',  ['LP','EW','SK']],
+  ['Payment Migration',       'Stark Ind.',     'Blocked',      'red',      'Move from legacy gateway to new processor with zero downtime.', 18, 'Jul 02',  ['DR','MK']],
+  ['Design System v3',        'Internal',       'On track',     'green',    'Tokens, components, and Figma library refresh for v4 era.', 64, 'May 20',  ['SK','EW','LP','TH']],
+  ['Help Center Rewrite',     'Umbrella Co',    'On hold',      'yellow',   'Migration to new docs platform with full content audit.',     5,  'TBD',     ['YT','MR']],
+  ['SOC 2 Compliance',        'Internal',       'On track',     'green',    'Type II audit prep with controls, evidence, and policies.',  72, 'Jun 30',  ['DR','TH']],
+  ['Pricing Experiment',      'Tyrell Corp',    'On track',     'green',    'A/B test of three new pricing tiers across funnel.',         50, 'May 05',  ['LP','MK']]
+];
+const colorMap = { primary:'var(--primary)', azure:'var(--azure)', purple:'var(--purple)', yellow:'var(--yellow)', red:'var(--red)', green:'var(--green)', blue:'var(--blue)' };
+const memberColors = { SK:'azure', MR:'purple', EW:'yellow', MK:'red', LP:'green', DR:'blue', YT:'primary', TH:'purple' };
+const statusCls = { green:'status-green', yellow:'status-yellow', red:'status-red' };
+
+const grid = document.getElementById('projects-grid');
+grid.innerHTML = projects.map(([title, client, status, sCls, desc, pct, due, members], idx) => `
+  <button type="button" class="project-card" data-idx="${idx}">
+    <div class="top">
+      <div>
+        <div class="title">${title}</div>
+        <div class="client">${client}</div>
+      </div>
+      <span class="status ${statusCls[sCls]}">${status}</span>
+    </div>
+    <div class="desc">${desc}</div>
+    <div>
+      <div style="display:flex;justify-content:space-between;font-size:11.5px;color:var(--text-muted);margin-bottom:4px">
+        <span>Progress</span><span class="cell-strong">${pct}%</span>
+      </div>
+      <div class="progress-thin"><div class="bar" style="width:${pct}%;background:var(--${sCls === 'red' ? 'red' : sCls === 'yellow' ? 'yellow' : 'primary'})"></div></div>
+    </div>
+    <div class="footer-row">
+      <div class="avatars">
+        ${members.map((m) => `<div class="av" style="background:${colorMap[memberColors[m] || 'primary']}">${m}</div>`).join('')}
+      </div>
+      <span>Due ${due}</span>
+    </div>
+  </button>
+`).join('');
+
+// Wire card clicks → detail modal.
+import('/src/v4/details.js').then(({ openProjectModal }) => {
+  grid.addEventListener('click', (e) => {
+    const card = e.target.closest('.project-card');
+    if (!card) return;
+    const idx = parseInt(card.dataset.idx, 10);
+    const p = projects[idx];
+    if (!p) return;
+    const [title, client, status, sCls, desc, pct, due, members] = p;
+    openProjectModal({ title, client, status, sCls, desc, pct, due, members });
+  });
+});
+</script>
+@endverbatim
+@endpush

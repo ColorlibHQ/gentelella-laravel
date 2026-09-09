@@ -1,0 +1,15 @@
+// Gentelella v4 — your overrides.
+//
+// The design system is loaded by resources/js/gentelella.js; this file is
+// layered on top. Theme colours are CSS custom properties, so overriding one
+// is a plain declaration — no Sass variables to chase, and dark mode picks it
+// up automatically.
+//
+// :root {
+//     --accent: #1abb9c;
+//     --sidebar-bg: #1a2332;
+// }
+//
+// [data-theme='dark'] {
+//     --accent: #21d4ae;
+// }

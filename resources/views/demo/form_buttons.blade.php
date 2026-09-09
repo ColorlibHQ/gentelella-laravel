@@ -1,0 +1,83 @@
+{{--
+    GENERATED FILE — DO NOT EDIT.
+
+    Source: production/form_buttons.html in ColorlibHQ/gentelella.
+    Regenerate: npm run export:demo
+
+    Static markup: the body sits in a verbatim block and compiles to itself.
+--}}
+@extends('gentelella::page')
+
+@section('title', 'Buttons')
+@section('page_key', 'form-buttons')
+@section('breadcrumb', 'Home > Forms > Buttons')
+
+@section('content')
+@verbatim
+<div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Forms</div>
+        <h1 class="page-title">Buttons</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-1">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Variants</div></div>
+      <div class="card-body" style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-outline">Outline</button>
+        <button class="btn btn-primary" disabled style="opacity:.5;cursor:not-allowed">Disabled</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Sizes</div></div>
+      <div class="card-body" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <button class="btn btn-primary btn-sm">Small</button>
+        <button class="btn btn-primary">Default</button>
+        <button class="btn btn-primary" style="height:38px;padding:0 16px;font-size:13px">Large</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">With icons</div></div>
+      <div class="card-body" style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-primary"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h8M8 4v8"/></svg> New</button>
+        <button class="btn btn-outline"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l3 3 7-8"/></svg> Save</button>
+        <button class="btn btn-outline"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h10M6 6V4a2 2 0 014 0v2M5 6l1 8h4l1-8"/></svg> Delete</button>
+        <button class="btn btn-outline"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12L14 2M14 2H6M14 2v8"/></svg> Send</button>
+        <button class="btn btn-primary">Continue <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Button groups</div></div>
+      <div class="card-body" style="display:flex;gap:16px;flex-wrap:wrap">
+        <div style="display:inline-flex;border:1px solid var(--border-color);border-radius:var(--radius-sm);overflow:hidden">
+          <button class="btn btn-outline" style="border:none;border-radius:0">Day</button>
+          <button class="btn btn-outline" style="border:none;border-radius:0;border-left:1px solid var(--border-color);background:var(--bg-surface-secondary)">Week</button>
+          <button class="btn btn-outline" style="border:none;border-radius:0;border-left:1px solid var(--border-color)">Month</button>
+        </div>
+        <div class="chart-tabs">
+          <button class="chart-tab active">All</button>
+          <button class="chart-tab">Active</button>
+          <button class="chart-tab">Archived</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Icon-only</div></div>
+      <div class="card-body" style="display:flex;gap:6px">
+        <button class="card-opt-btn" aria-label="Remove"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h8"/></svg></button>
+        <button class="card-opt-btn" aria-label="Add"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 3v8M3 7h8"/></svg></button>
+        <button class="card-opt-btn" aria-label="Toggle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/></svg></button>
+        <button class="card-opt-btn" aria-label="More options"><svg viewBox="0 0 14 14" fill="currentColor"><circle cx="3" cy="7" r="1.4"/><circle cx="7" cy="7" r="1.4"/><circle cx="11" cy="7" r="1.4"/></svg></button>
+      </div>
+    </div>
+  </div>
+@endverbatim
+@endsection

@@ -1,0 +1,77 @@
+{{--
+    GENERATED FILE — DO NOT EDIT.
+
+    Source: production/form_upload.html in ColorlibHQ/gentelella.
+    Regenerate: npm run export:demo
+
+    Static markup: the body sits in a verbatim block and compiles to itself.
+--}}
+@extends('gentelella::page')
+
+@section('title', 'Upload')
+@section('page_key', 'form-upload')
+@section('breadcrumb', 'Home > Forms > Upload')
+
+@section('content')
+@verbatim
+<div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Forms</div>
+        <h1 class="page-title">File upload</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-1">
+    <div class="card">
+      <div class="card-header"><div><div class="card-title">Upload files</div><div class="card-subtitle">Drag & drop or click to browse · Max 50 MB per file</div></div></div>
+      <div class="card-body">
+        <label class="dropzone" id="dz" for="file">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21V9M6 13l6-6 6 6"/><path d="M3 3h18"/></svg>
+          <div class="hint">Drop files here or click to browse</div>
+          <div class="sub">PNG, JPG, PDF up to 50 MB · or paste from clipboard</div>
+          <input type="file" id="file" multiple style="display:none">
+        </label>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div><div class="card-title">Recent uploads</div><div class="card-subtitle">3 files · 4.7 MB</div></div>
+        <button class="btn btn-outline btn-sm">Clear all</button>
+      </div>
+      <div class="card-body" style="padding:8px 16px">
+        <div class="upload-row">
+          <div class="icon">PDF</div>
+          <div><div class="cell-strong">Q4-Report-2025.pdf</div><div style="font-size:11px;color:var(--text-muted)">2.3 MB · uploaded just now</div></div>
+          <div style="width:120px"><div class="progress-thin"><div class="bar" style="width:100%;background:var(--green)"></div></div></div>
+          <div><span class="status status-green">Done</span></div>
+        </div>
+        <div class="upload-row">
+          <div class="icon">PNG</div>
+          <div><div class="cell-strong">hero-mockup-v3.png</div><div style="font-size:11px;color:var(--text-muted)">1.8 MB · uploading…</div></div>
+          <div style="width:120px"><div class="progress-thin"><div class="bar" style="width:64%;background:var(--primary)"></div></div></div>
+          <div style="font-size:11.5px;color:var(--text-muted)">64%</div>
+        </div>
+        <div class="upload-row">
+          <div class="icon">CSV</div>
+          <div><div class="cell-strong">customer-export.csv</div><div style="font-size:11px;color:var(--text-muted)">0.6 MB · queued</div></div>
+          <div style="width:120px"><div class="progress-thin"><div class="bar" style="width:0%"></div></div></div>
+          <div><button class="btn btn-outline btn-sm">Cancel</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endverbatim
+@endsection
+
+@push('scripts')
+@verbatim
+<script type="module">
+const dz = document.getElementById('dz');
+['dragenter', 'dragover'].forEach((e) => dz.addEventListener(e, (ev) => { ev.preventDefault(); dz.classList.add('over'); }));
+['dragleave', 'drop'].forEach((e) => dz.addEventListener(e, (ev) => { ev.preventDefault(); dz.classList.remove('over'); }));
+</script>
+@endverbatim
+@endpush

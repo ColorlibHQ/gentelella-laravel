@@ -1,0 +1,151 @@
+{{--
+    GENERATED FILE — DO NOT EDIT.
+
+    Source: production/other_charts.html in ColorlibHQ/gentelella.
+    Regenerate: npm run export:demo
+
+    Static markup: the body sits in a verbatim block and compiles to itself.
+--}}
+@extends('gentelella::page')
+
+@section('title', 'Other charts')
+@section('page_key', 'other-charts')
+@section('breadcrumb', 'Home > Charts > Other')
+
+@section('content')
+@verbatim
+<div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Visualisations</div>
+        <h1 class="page-title">Misc visualizations</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-3">
+    <!-- Vertical bar gauges -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">Quota usage</div></div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:14px">
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:4px"><span>Storage</span><span class="cell-strong">68%</span></div>
+          <div class="progress-thin" style="height:6px"><div class="bar" style="width:68%;background:var(--primary)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:4px"><span>Bandwidth</span><span class="cell-strong">42%</span></div>
+          <div class="progress-thin" style="height:6px"><div class="bar" style="width:42%;background:var(--azure)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:4px"><span>API calls</span><span class="cell-strong">87%</span></div>
+          <div class="progress-thin" style="height:6px"><div class="bar" style="width:87%;background:var(--yellow)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:4px"><span>Seats</span><span class="cell-strong">94%</span></div>
+          <div class="progress-thin" style="height:6px"><div class="bar" style="width:94%;background:var(--red)"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stacked storage -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">Storage breakdown</div></div>
+      <div class="card-body">
+        <div class="storage-bar" style="height:12px">
+          <div style="width:42%;background:var(--primary)"></div>
+          <div style="width:18%;background:var(--azure)"></div>
+          <div style="width:12%;background:var(--yellow)"></div>
+          <div style="width:13%;background:var(--purple)"></div>
+        </div>
+        <div class="storage-legend">
+          <div class="storage-legend-item"><span class="dot" style="background:var(--primary)"></span> Documents <span class="val">3.4 GB</span></div>
+          <div class="storage-legend-item"><span class="dot" style="background:var(--azure)"></span> Images <span class="val">1.4 GB</span></div>
+          <div class="storage-legend-item"><span class="dot" style="background:var(--yellow)"></span> Videos <span class="val">1.0 GB</span></div>
+          <div class="storage-legend-item"><span class="dot" style="background:var(--purple)"></span> Other <span class="val">1.0 GB</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Donut -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">Browsers</div></div>
+      <div class="card-body">
+        <div class="donut-block">
+          <div class="donut-svg">
+            <div data-chart="browsers" style="width:100%;height:100%"></div>
+            <div class="donut-center-label"><div class="num">62%</div><div class="sub">chrome</div></div>
+          </div>
+          <div class="donut-legend">
+            <div class="donut-legend-item"><span class="dot" style="background:var(--primary)"></span> Chrome <span class="pct">62%</span></div>
+            <div class="donut-legend-item"><span class="dot" style="background:var(--azure)"></span> Safari <span class="pct">25%</span></div>
+            <div class="donut-legend-item"><span class="dot" style="background:var(--yellow)"></span> Firefox <span class="pct">13%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Activity heatmap</div></div>
+      <div class="card-body">
+        <div id="heatmap" style="display:grid;grid-template-columns:repeat(20,1fr);gap:3px;font-size:0"></div>
+        <div style="display:flex;justify-content:space-between;margin-top:10px;font-size:11px;color:var(--text-muted)">
+          <span>Less</span>
+          <div style="display:flex;gap:3px">
+            <span style="width:10px;height:10px;background:var(--border-color-light);border-radius:2px"></span>
+            <span style="width:10px;height:10px;background:rgba(26,187,156,0.25);border-radius:2px"></span>
+            <span style="width:10px;height:10px;background:rgba(26,187,156,0.5);border-radius:2px"></span>
+            <span style="width:10px;height:10px;background:rgba(26,187,156,0.75);border-radius:2px"></span>
+            <span style="width:10px;height:10px;background:var(--primary);border-radius:2px"></span>
+          </div>
+          <span>More</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">KPI tiles</div></div>
+      <div class="card-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div style="background:var(--primary-lt);padding:14px;border-radius:var(--radius)">
+            <div style="font-size:11px;color:var(--primary);font-weight:600;text-transform:uppercase;letter-spacing:.4px">Revenue</div>
+            <div style="font-size:22px;font-weight:600;color:var(--text);letter-spacing:-.5px">$24,567</div>
+            <div style="font-size:11.5px;color:var(--green)">↑ 18% MoM</div>
+          </div>
+          <div style="background:var(--blue-lt);padding:14px;border-radius:var(--radius)">
+            <div style="font-size:11px;color:var(--blue);font-weight:600;text-transform:uppercase;letter-spacing:.4px">Users</div>
+            <div style="font-size:22px;font-weight:600;color:var(--text);letter-spacing:-.5px">8,432</div>
+            <div style="font-size:11.5px;color:var(--green)">↑ 14% WoW</div>
+          </div>
+          <div style="background:var(--yellow-lt);padding:14px;border-radius:var(--radius)">
+            <div style="font-size:11px;color:#b45309;font-weight:600;text-transform:uppercase;letter-spacing:.4px">Orders</div>
+            <div style="font-size:22px;font-weight:600;color:var(--text);letter-spacing:-.5px">1,240</div>
+            <div style="font-size:11.5px;color:var(--red)">↓ 3%</div>
+          </div>
+          <div style="background:var(--purple-lt);padding:14px;border-radius:var(--radius)">
+            <div style="font-size:11px;color:var(--purple);font-weight:600;text-transform:uppercase;letter-spacing:.4px">CTR</div>
+            <div style="font-size:22px;font-weight:600;color:var(--text);letter-spacing:-.5px">4.2%</div>
+            <div style="font-size:11.5px;color:var(--green)">↑ 0.4pp</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endverbatim
+@endsection
+
+@push('scripts')
+@verbatim
+<script type="module">
+const colors = ['var(--border-color-light)','rgba(26,187,156,0.25)','rgba(26,187,156,0.5)','rgba(26,187,156,0.75)','var(--primary)'];
+const heatmap = document.getElementById('heatmap');
+let html = '';
+for (let i = 0; i < 140; i++) {
+  const lvl = Math.floor(Math.random() * 5);
+  html += `<span style="aspect-ratio:1;background:${colors[lvl]};border-radius:2px"></span>`;
+}
+heatmap.innerHTML = html;
+</script>
+@endverbatim
+@endpush

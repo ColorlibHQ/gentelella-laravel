@@ -1,0 +1,48 @@
+{{--
+    GENERATED FILE — DO NOT EDIT.
+
+    Source: production/fixed_sidebar.html in ColorlibHQ/gentelella.
+    Regenerate: npm run export:demo
+
+    Static markup: the body sits in a verbatim block and compiles to itself.
+--}}
+@extends('gentelella::page')
+
+@section('title', 'Fixed sidebar')
+@section('page_key', 'fixed-sidebar')
+@section('breadcrumb', 'Home > Fixed sidebar')
+
+@section('content')
+@verbatim
+<div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Layouts</div>
+        <h1 class="page-title">Fixed sidebar</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-1">
+    <div class="alert alert-info">
+      <svg class="alert-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v.01M8 7v4"/></svg>
+      <div class="alert-body"><strong>Default behavior in v4.</strong> The sidebar uses <code>position: fixed</code> by default and scrolls independently from the main content. Try scrolling — the sidebar stays in place.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Long content for scroll testing</div></div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:14px;font-size:13px;color:var(--text-secondary);line-height:1.6">
+        <p>The v4 layout is built around a fixed sidebar (<code style="font-family:var(--font-mono);font-size:11.5px;background:var(--bg-surface-secondary);padding:1px 5px;border-radius:3px">.sidebar { position: fixed }</code>) and a fixed topbar (<code style="font-family:var(--font-mono);font-size:11.5px;background:var(--bg-surface-secondary);padding:1px 5px;border-radius:3px">.topbar { position: fixed }</code>). The main content scrolls under both.</p>
+        <p>This page exists as a smoke test — load it and scroll. The sidebar should stay anchored to the left edge regardless of how far down you go, and so should the topbar at the top.</p>
+        ${'<p>Filler paragraph used to exercise vertical scroll on the main content area while the sidebar holds its position.</p>'.repeat(0)}
+      </div>
+    </div>
+
+    <div class="card"><div class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding:24px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div></div>
+    <div class="card"><div class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding:24px">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</div></div>
+    <div class="card"><div class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding:24px">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</div></div>
+    <div class="card"><div class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding:24px">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</div></div>
+    <div class="card"><div class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:1.7;padding:24px">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias.</div></div>
+  </div>
+@endverbatim
+@endsection
