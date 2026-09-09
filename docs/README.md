@@ -1,5 +1,10 @@
 # Gentelella for Laravel — documentation
 
+These files are the source of truth for authors: they sit next to the code and
+`tests/Feature/DocumentationTest.php` checks their claims against it. Readers get
+the same content at **<https://gentelella.colorlib.com/docs/laravel/>**, generated
+from here by `node scripts/export-docs.mjs` — so the two cannot drift.
+
 | | |
 |---|---|
 | [Installation](installation.md) | Requirements, install, Vite wiring, first page |

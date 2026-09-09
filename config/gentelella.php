@@ -130,7 +130,7 @@ return [
     // The Laravel edition's own documentation, not the HTML edition's — the
     // two cover different things, and a Blade developer sent to the static
     // template's docs finds nothing about panels, fields or filters.
-    'docs_url' => 'https://github.com/ColorlibHQ/gentelella-laravel/tree/main/docs',
+    'docs_url' => 'https://gentelella.colorlib.com/docs/laravel/',
 
     /*
     |--------------------------------------------------------------------------

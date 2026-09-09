@@ -183,6 +183,6 @@ it('leaves the marker off bare pages, which have no shell to wire', function () 
 it('points the topbar docs button at this edition, not the html one', function () {
     // A Blade developer sent to the static template's docs finds nothing about
     // panels, fields or filters.
-    expect(config('gentelella.docs_url'))->toContain('gentelella-laravel')
+    expect(config('gentelella.docs_url'))->toContain('/docs/laravel')
         ->and(renderShell())->toContain('href="'.config('gentelella.docs_url').'"');
 });
