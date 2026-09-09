@@ -3,7 +3,17 @@
 @section('title', __('Sign in'))
 
 @section('content')
+@php $demo = $gentelella->demoCredentials(); @endphp
+
 <x-gentelella::auth.card :title="__('Welcome back')" :subtitle="__('Sign in to continue to your dashboard.')">
+    @if ($demo)
+        <div class="banner" role="status">
+            <div class="banner-body">
+                {{ __('This is a live demo. The account below is filled in for you.') }}
+            </div>
+        </div>
+    @endif
+
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
@@ -11,7 +21,10 @@
             <label class="form-label" for="email">{{ __('Email') }}</label>
             <div class="input-group">
                 <svg class="input-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M2 5l6 4 6-4"/></svg>
-                <input type="email" id="email" name="email" class="form-control" value="{{ old('email') }}"
+                {{-- Anything typed wins over the demo value, so a failed attempt
+                     redisplays what the person actually entered. --}}
+                <input type="email" id="email" name="email" class="form-control"
+                       value="{{ old('email', $demo['email'] ?? '') }}"
                        placeholder="you@company.com" required autofocus autocomplete="username">
             </div>
         </div>
@@ -21,6 +34,7 @@
             <div class="input-group">
                 <svg class="input-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5 7V5a3 3 0 016 0v2"/></svg>
                 <input type="password" id="password" name="password" class="form-control"
+                       value="{{ $demo['password'] ?? '' }}"
                        placeholder="••••••••" required autocomplete="current-password">
             </div>
             @error('password')<div class="form-error">{{ $message }}</div>@enderror

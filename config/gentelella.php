@@ -214,6 +214,31 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Demo account
+    |--------------------------------------------------------------------------
+    |
+    | A public demo needs a way in, so `php artisan gentelella:demo` creates
+    | this account and the sign-in screen fills it in.
+    |
+    | It is read ONLY while `demo` above is true — a production app cannot
+    | print credentials on its login page by forgetting a setting. Set to null
+    | to run the demo without an account.
+    |
+    | The password is long and has never appeared in a breach corpus, so
+    | browsers do not flag it on sign-in. Note that a password field served
+    | over plain HTTP is marked "Not secure" whatever the password is: a demo
+    | with an account needs TLS.
+    |
+    */
+
+    'demo_user' => [
+        'name' => 'Demo User',
+        'email' => 'demo@example.com',
+        'password' => 'Gentelella-Demo-7Fq2-Vx9k-Rm4t',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Vite entry points
     |--------------------------------------------------------------------------
     |

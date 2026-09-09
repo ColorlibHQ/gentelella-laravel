@@ -5,7 +5,11 @@ declare(strict_types=1);
 namespace ColorlibHQ\Gentelella\Console;
 
 use ColorlibHQ\Gentelella\Database\Seeders\GentelellaDemoSeeder;
+use ColorlibHQ\Gentelella\Gentelella;
 use Illuminate\Console\Command;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Schema;
 
 /**
  * Prepares the bundled demo: runs the demo migrations and seeds sample rows for
@@ -16,6 +20,45 @@ class DemoCommand extends Command
     protected $signature = 'gentelella:demo {--fresh : Roll the demo tables back before migrating}';
 
     protected $description = 'Migrate and seed the bundled Gentelella demo data';
+
+    /**
+     * Create or update the account the sign-in screen fills in.
+     *
+     * Idempotent: re-running resets the password, which is what you want after
+     * somebody has changed it on a public demo.
+     */
+    private function createDemoUser(): void
+    {
+        $credentials = app(Gentelella::class)->demoCredentials();
+
+        if ($credentials === null) {
+            return;
+        }
+
+        /** @var class-string<Model>|null $class */
+        $class = $this->laravel['config']->get('auth.providers.users.model');
+
+        if ($class === null || ! class_exists($class)) {
+            $this->components->warn('No user model configured; skipped the demo account.');
+
+            return;
+        }
+
+        $model = new $class;
+
+        if (! Schema::hasTable($model->getTable())) {
+            $this->components->warn("Table [{$model->getTable()}] does not exist; skipped the demo account.");
+
+            return;
+        }
+
+        $class::query()->updateOrCreate(
+            ['email' => $credentials['email']],
+            ['name' => $credentials['name'], 'password' => Hash::make($credentials['password'])],
+        );
+
+        $this->components->info('Demo account ready: '.$credentials['email']);
+    }
 
     public function handle(): int
     {
@@ -50,6 +93,8 @@ class DemoCommand extends Command
         }
 
         $this->components->info('Demo data seeded.');
+
+        $this->createDemoUser();
 
         return self::SUCCESS;
     }

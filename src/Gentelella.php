@@ -124,6 +124,34 @@ class Gentelella
     }
 
     /**
+     * The demo account, or null.
+     *
+     * Gated on demo mode, not merely on the credentials being present, so an
+     * application that leaves the default block in its published config cannot
+     * end up advertising a login on a real site.
+     *
+     * @return array{name: string, email: string, password: string}|null
+     */
+    public function demoCredentials(): ?array
+    {
+        if (! $this->config->get('gentelella.demo', false)) {
+            return null;
+        }
+
+        $user = $this->config->get('gentelella.demo_user');
+
+        if (! is_array($user) || ! isset($user['email'], $user['password'])) {
+            return null;
+        }
+
+        return [
+            'name' => (string) ($user['name'] ?? 'Demo User'),
+            'email' => (string) $user['email'],
+            'password' => (string) $user['password'],
+        ];
+    }
+
+    /**
      * Parse a breadcrumb string into renderable crumbs.
      *
      * Same grammar as the static template's data-breadcrumb attribute:

@@ -54,6 +54,43 @@ Two things that conversion has to get right, both of which were bugs first:
 Pages the package owns by hand — currently just `tables` — are listed in `CRUD_OWNED` in the export
 script and are never overwritten.
 
+## The demo account
+
+A public demo needs a way in. `gentelella:demo` creates one, and the sign-in screen fills it in:
+
+```php
+'demo_user' => [
+    'name' => 'Demo User',
+    'email' => 'demo@example.com',
+    'password' => 'Gentelella-Demo-7Fq2-Vx9k-Rm4t',
+],
+```
+
+Set it to `null` to run the demo without an account.
+
+**The prefill is gated on `demo`, not on the block being present.** An application that leaves the
+default in its published config cannot end up advertising a login on a real site.
+
+The default password is 30 characters, mixed case with digits, and does not appear in the breach
+corpora browsers check — a short or reused one would make Chrome flag the account on every sign-in.
+Re-running `gentelella:demo` resets it, which is what you want after somebody has changed it on a
+public demo.
+
+**A password field served over plain HTTP is marked "Not secure" whatever the password is.** A demo
+with an account needs TLS.
+
+## Landing on the sign-in screen
+
+A fresh Laravel app answers `/` with its own welcome page. For a demo, point it at the login screen
+instead:
+
+```php
+// routes/web.php
+Route::redirect('/', '/login');
+```
+
+The package does not do this for you: claiming `/` in someone's application would be a surprise.
+
 ## Turning it off
 
 Set `'demo' => false`. The routes, the migrations and the seeder all go with it.
