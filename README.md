@@ -4,6 +4,14 @@ Official [Gentelella v4](https://github.com/ColorlibHQ/gentelella) integration f
 vanilla JS, SCSS, **no Bootstrap, no jQuery**, Vite-ready.
 
 <p align="center">
+  <a href="https://gentelella-laravel.colorlib.com"><strong>Live demo →</strong></a>
+  &nbsp;·&nbsp;
+  <a href="docs/README.md">Documentation</a>
+  &nbsp;·&nbsp;
+  <a href="docs/installation.md">Get started</a>
+</p>
+
+<p align="center">
   <img alt="Dashboard, light theme" src="docs/screenshots/dashboard-light.webp" width="49%">
   <img alt="Dashboard, dark theme" src="docs/screenshots/dashboard-dark.webp" width="49%">
 </p>
@@ -12,9 +20,11 @@ vanilla JS, SCSS, **no Bootstrap, no jQuery**, Vite-ready.
   <img alt="Sign-in screen" src="docs/screenshots/login-light.webp" width="49%">
 </p>
 
-> **Status: in development.** The shell, the component library, the CRUD engine, all 58 demo pages
-> and the auth screens work end to end. Documentation and the remaining field types are still
-> landing — see [Roadmap](#roadmap).
+> **Status: in development.** Everything below works end to end and is covered by 331 tests plus a
+> browser smoke suite. Not yet tagged or listed on Packagist — install from the repository for now.
+
+**[Live demo →](https://gentelella-laravel.colorlib.com)** — the sign-in screen fills the demo
+account in for you.
 
 ## Documentation
 
@@ -365,7 +375,8 @@ against the menu, then plain text. The last crumb is the current page and is nev
 - [x] Error pages and JSON translations
 - [x] Auth — login, registration, password reset, `gentelella:make-auth`
 - [x] Documentation — [docs/](docs/README.md)
-- [ ] Live demo
+- [x] Live demo — [gentelella-laravel.colorlib.com](https://gentelella-laravel.colorlib.com)
+- [ ] Tagged release and Packagist listing
 
 ## Development
 
