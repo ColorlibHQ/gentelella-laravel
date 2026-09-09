@@ -48,8 +48,15 @@ const context = await browser.newContext({ viewport: { width: 1440, height: 900 
 const page = await context.newPage();
 
 const jsErrors = [];
-page.on('pageerror', (e) => jsErrors.push(e.message));
-page.on('console', (m) => { if (m.type() === 'error') {jsErrors.push(m.text());} });
+// Chromium logs this when a navigation interrupts a view transition, which is
+// exactly what submitting a form does. It describes the browser's own state,
+// not the page's. Everything else counts.
+const BENIGN = /Transition was aborted because of invalid state/i;
+
+const noteError = (text) => { if (!BENIGN.test(text)) {jsErrors.push(text);} };
+
+page.on('pageerror', (e) => noteError(e.message));
+page.on('console', (m) => { if (m.type() === 'error') {noteError(m.text());} });
 
 await page.goto(`${BASE}/demo/index`, { waitUntil: 'networkidle' });
 
@@ -123,6 +130,23 @@ if (palette) {
   ]).then(([ok]) => ok);
 
   record('palette result navigates', navigated && !page.url().includes('.html'), page.url());
+}
+
+// Forms have to actually submit. The design system fakes a submit on its own
+// demo forms, and until it learned to tell them apart it swallowed every real
+// one — sign-in, registration and every create screen looked like they did
+// nothing. No amount of markup assertions catches that.
+await page.goto(`${BASE}/login`, { waitUntil: 'networkidle' });
+if (await page.$('form[action$="/login"]')) {
+  const posted = await Promise.all([
+    page.waitForResponse((r) => r.request().method() === 'POST' && r.url().includes('/login'), { timeout: 5000 })
+      .then(() => true, () => false),
+    page.click('button[type="submit"]'),
+  ]).then(([ok]) => ok);
+
+  record('sign-in form submits to the server', posted);
+} else {
+  record('sign-in form submits to the server', false, 'no login form found');
 }
 
 // The CRUD page loads its rows over the wire.
