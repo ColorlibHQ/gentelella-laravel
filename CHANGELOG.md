@@ -5,9 +5,9 @@ All notable changes to `colorlibhq/gentelella-laravel` are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.0.0] - 2026-09-09
 
-First working version. Not yet tagged.
+First release.
 
 ### Added
 
@@ -37,8 +37,16 @@ First working version. Not yet tagged.
 - Two npm dependencies — `gentelella` and `sass`. ECharts, DataTables and Leaflet load lazily on
   the pages that use them.
 
-### Not yet implemented
+### Also in this release
 
-- Field types: date range, multi-select, rich text, file upload, avatar upload, OTP, repeatable,
-  checklist, month, week.
-- List filters and the reorder operation.
+- **List filters** — text, select, boolean and date-range controls, plus an `apply` closure for
+  anything else. Sent with every request, so a filter survives paging and sorting.
+- **Reorder operation** — up/down rather than drag: no library, works on a phone, and can be driven
+  from the keyboard.
+- **CSV export** — the whole filtered result set, streamed in chunks, matching what the table shows.
+- **Demo account** — created by `gentelella:demo` and filled into the sign-in screen, gated on demo
+  mode so a real site cannot advertise a login by forgetting a setting.
+- **Browser smoke test** — `npm run smoke`. The PHP suite asserts markup, and markup that renders
+  perfectly can still do nothing; this drives a real browser.
+
+[1.0.0]: https://github.com/ColorlibHQ/gentelella-laravel/releases/tag/v1.0.0

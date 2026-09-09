@@ -20,8 +20,9 @@ vanilla JS, SCSS, **no Bootstrap, no jQuery**, Vite-ready.
   <img alt="Sign-in screen" src="docs/screenshots/login-light.webp" width="49%">
 </p>
 
-> **Status: in development.** Everything below works end to end and is covered by 331 tests plus a
-> browser smoke suite. Not yet tagged or listed on Packagist — install from the repository for now.
+```bash
+composer require colorlibhq/gentelella-laravel
+```
 
 **[Live demo →](https://gentelella-laravel.colorlib.com)** — the sign-in screen fills the demo
 account in for you.
