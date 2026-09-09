@@ -25,14 +25,30 @@ class DemoCommand extends Command
             return self::FAILURE;
         }
 
+        // --force throughout: without it both commands stop to ask for
+        // confirmation when APP_ENV is production, and callSilently swallows
+        // the prompt — so the demo would report success having done nothing.
         if ($this->option('fresh')) {
-            $this->callSilently('migrate:rollback', ['--step' => 1]);
+            $this->callSilently('migrate:rollback', ['--step' => 1, '--force' => true]);
         }
 
-        $this->callSilently('migrate');
+        if ($this->callSilently('migrate', ['--force' => true]) !== self::SUCCESS) {
+            $this->components->error('Migration failed. Run `php artisan migrate` to see why.');
+
+            return self::FAILURE;
+        }
+
         $this->components->info('Demo tables migrated.');
 
-        $this->callSilently('db:seed', ['--class' => GentelellaDemoSeeder::class]);
+        if ($this->callSilently('db:seed', [
+            '--class' => GentelellaDemoSeeder::class,
+            '--force' => true,
+        ]) !== self::SUCCESS) {
+            $this->components->error('Seeding failed. Run `php artisan db:seed --class='.GentelellaDemoSeeder::class.'` to see why.');
+
+            return self::FAILURE;
+        }
+
         $this->components->info('Demo data seeded.');
 
         return self::SUCCESS;

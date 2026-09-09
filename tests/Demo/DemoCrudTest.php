@@ -101,3 +101,14 @@ it('migrates and seeds through the demo command', function () {
 
     expect(Product::count())->toBe(25);
 });
+
+it('seeds even when the environment is production', function () {
+    // Both migrate and db:seed stop to ask for confirmation in production, and
+    // callSilently swallows the prompt — the command reported success having
+    // written nothing.
+    app()['env'] = 'production';
+
+    $this->artisan('gentelella:demo')->assertSuccessful();
+
+    expect(Product::count())->toBe(25);
+});
