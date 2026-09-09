@@ -179,3 +179,10 @@ it('marks the body as a shell page so the design system wires itself', function 
 it('leaves the marker off bare pages, which have no shell to wire', function () {
     expect(view('bare')->render())->not->toContain('data-shell');
 });
+
+it('points the topbar docs button at this edition, not the html one', function () {
+    // A Blade developer sent to the static template's docs finds nothing about
+    // panels, fields or filters.
+    expect(config('gentelella.docs_url'))->toContain('gentelella-laravel')
+        ->and(renderShell())->toContain('href="'.config('gentelella.docs_url').'"');
+});

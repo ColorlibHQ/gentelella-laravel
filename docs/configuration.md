@@ -48,7 +48,7 @@ See [Menu](menu.md).
 
 | Key | Default | |
 |---|---|---|
-| `docs_url` | Colorlib docs | `null` hides the Docs button |
+| `docs_url` | This package's docs | `null` hides the Docs button |
 | `search_enabled` | `true` | ⌘K search box |
 | `theme_toggle` | `true` | Light/dark switch |
 | `notifications_enabled` | `true` | Bell |
