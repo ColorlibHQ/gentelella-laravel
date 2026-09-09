@@ -145,8 +145,24 @@ if (await page.$('form[action$="/login"]')) {
   ]).then(([ok]) => ok);
 
   record('sign-in form submits to the server', posted);
+
+  // If that signed us in, going back to the sign-in screen must not bounce.
+  // Laravel's guest middleware sends an authenticated visitor away from
+  // /login; if it sends them somewhere that redirects back, the browser loops
+  // until it gives up. That is a two-route interaction no unit test sees.
+  await page.waitForLoadState('networkidle').catch(() => {});
+
+  if (!page.url().endsWith('/login')) {
+    const settled = await page.goto(`${BASE}/login`, { waitUntil: 'domcontentloaded', timeout: 10000 })
+      .then(() => true, () => false);
+
+    record('signed-in visitor is not bounced in a loop', settled, settled ? page.url() : 'too many redirects');
+  } else {
+    record('signed-in visitor is not bounced in a loop', true, 'sign-in did not succeed; nothing to loop');
+  }
 } else {
   record('sign-in form submits to the server', false, 'no login form found');
+  record('signed-in visitor is not bounced in a loop', false, 'no login form found');
 }
 
 // The CRUD page loads its rows over the wire.
