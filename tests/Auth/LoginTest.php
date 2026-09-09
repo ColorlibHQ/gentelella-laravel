@@ -116,3 +116,19 @@ it('keeps signed-in users away from the sign-in screen', function () {
 it('requires authentication to sign out', function () {
     $this->post('/logout')->assertRedirect(route('login'));
 });
+
+it('redirects a signed-in visitor away from the sign-in screen to the configured home', function () {
+    $this->actingAs($this->user)->get('/login')->assertRedirect('/dashboard');
+});
+
+it('does not bounce between / and /login for a signed-in visitor', function () {
+    // The exact loop: "/" redirects to the sign-in screen, and the sign-in
+    // screen redirects an authenticated visitor back to "/".
+    Route::redirect('/', '/login');
+
+    $this->actingAs($this->user)
+        ->get('/login')
+        ->assertRedirect(config('gentelella.auth.home'));
+
+    expect(config('gentelella.auth.home'))->not->toBe('/');
+});

@@ -81,15 +81,23 @@ with an account needs TLS.
 
 ## Landing on the sign-in screen
 
-A fresh Laravel app answers `/` with its own welcome page. For a demo, point it at the login screen
-instead:
+A fresh Laravel app answers `/` with its own welcome page. For a demo, point it at the sign-in
+screen instead — but send people who are already signed in to the dashboard:
 
 ```php
 // routes/web.php
-Route::redirect('/', '/login');
+Route::get('/', fn () => auth()->check()
+    ? redirect(config('gentelella.auth.home'))
+    : redirect()->route('login'));
 ```
 
-The package does not do this for you: claiming `/` in someone's application would be a surprise.
+A plain `Route::redirect('/', '/login')` looks equivalent and is not: Laravel's `guest` middleware
+bounces an authenticated visitor off the sign-in screen, so `/` sends them to `/login`, `/login`
+sends them back to `/`, and the browser gives up. The package points that middleware at
+`auth.home` so the loop cannot form, but routing on the auth state is clearer anyway.
+
+The package does not claim `/` for you: taking the root of someone's application would be a
+surprise.
 
 ## Turning it off
 

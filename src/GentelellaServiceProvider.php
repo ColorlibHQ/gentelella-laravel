@@ -12,6 +12,7 @@ use ColorlibHQ\Gentelella\Console\MakeAuthCommand;
 use ColorlibHQ\Gentelella\Crud\RouteRegistrar;
 use ColorlibHQ\Gentelella\Demo\Http\ProductController as DemoProductController;
 use ColorlibHQ\Gentelella\Menu\MenuBuilder;
+use Illuminate\Auth\Middleware\RedirectIfAuthenticated;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
@@ -117,6 +118,18 @@ class GentelellaServiceProvider extends ServiceProvider
         if (! $this->app['config']->get('gentelella.auth.enabled', false)) {
             return;
         }
+
+        // Laravel's `guest` middleware sends an already-authenticated visitor to
+        // its own default, which knows nothing about this package. Left alone,
+        // an app whose "/" points at the sign-in screen loops forever: /login
+        // bounces to /, / bounces back to /login.
+        //
+        // The closure reads config at call time rather than closing over
+        // anything: redirectUsing() stores it statically, and a captured
+        // container would outlive the application that set it.
+        RedirectIfAuthenticated::redirectUsing(
+            fn (): string => (string) config('gentelella.auth.home', '/'),
+        );
 
         AuthRouteRegistrar::register();
     }
