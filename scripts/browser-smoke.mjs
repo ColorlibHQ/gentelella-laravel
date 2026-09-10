@@ -165,6 +165,33 @@ if (await page.$('form[action$="/login"]')) {
   record('signed-in visitor is not bounced in a loop', false, 'no login form found');
 }
 
+// Signing out has to look like it did something. It used to land back on the
+// dashboard — the session really was cleared, but the page was identical and
+// the button read as broken.
+if (!page.url().endsWith('/login')) {
+  await page.click('.tb-avatar').catch(() => {});
+  await page.waitForTimeout(300);
+
+  const signOut = await page.$('.menu-item:has-text("Sign out")');
+
+  if (signOut) {
+    await signOut.click();
+    await page.waitForTimeout(600);
+
+    for (const button of await page.$$('button')) {
+      const label = ((await button.textContent()) || '').trim();
+      if (/^sign out$/i.test(label) && await button.isVisible()) { await button.click(); break; }
+    }
+
+    await page.waitForTimeout(2500);
+    record('signing out lands on the sign-in screen', page.url().includes('/login'), page.url());
+  } else {
+    record('signing out lands on the sign-in screen', false, 'no Sign out item in the account menu');
+  }
+} else {
+  record('signing out lands on the sign-in screen', true, 'not signed in; nothing to sign out of');
+}
+
 // The CRUD page loads its rows over the wire.
 await page.goto(`${BASE}/demo/tables`, { waitUntil: 'networkidle' });
 await page.waitForTimeout(800);

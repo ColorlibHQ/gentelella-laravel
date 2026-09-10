@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
@@ -60,7 +61,23 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect($this->home());
+        // Back to the sign-in screen, not to `home` — that is where signing
+        // *in* takes you. Sending someone to a page they can still see while
+        // signed out leaves them looking at the same dashboard, with nothing
+        // to say it worked.
+        return redirect($this->afterLogout())
+            ->with('status', __('You have been signed out.'));
+    }
+
+    /**
+     * Where signing out lands.
+     *
+     * The sign-in screen when there is one; otherwise the site root, since a
+     * package cannot assume the application has a login route at all.
+     */
+    private function afterLogout(): string
+    {
+        return Route::has('login') ? route('login') : '/';
     }
 
     private function ensureIsNotRateLimited(Request $request): void

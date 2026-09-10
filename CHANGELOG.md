@@ -5,6 +5,16 @@ All notable changes to `colorlibhq/gentelella-laravel` are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.2] - 2026-09-10
+
+### Fixed
+
+- Signing out landed on `auth.home`. The session really was cleared, but that is a page you can
+  still see while signed out, so it looked as though the button had done nothing. It now returns to
+  the sign-in screen and says so.
+
+[1.0.2]: https://github.com/ColorlibHQ/gentelella-laravel/releases/tag/v1.0.2
+
 ## [1.0.1] - 2026-09-09
 
 ### Fixed

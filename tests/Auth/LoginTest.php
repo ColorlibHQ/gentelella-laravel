@@ -104,7 +104,7 @@ it('keys the throttle by address and origin', function () {
 it('signs a user out and invalidates the session', function () {
     $this->actingAs($this->user);
 
-    $this->post('/logout')->assertRedirect('/dashboard');
+    $this->post('/logout')->assertRedirect(route('login'));
 
     expect(Auth::check())->toBeFalse();
 });
@@ -131,4 +131,22 @@ it('does not bounce between / and /login for a signed-in visitor', function () {
         ->assertRedirect(config('gentelella.auth.home'));
 
     expect(config('gentelella.auth.home'))->not->toBe('/');
+});
+
+it('lands on the sign-in screen after signing out', function () {
+    // Redirecting to `home` leaves someone looking at a page they can still
+    // see while signed out — the same dashboard, with nothing to say it
+    // worked. It reads as a broken button.
+    $this->actingAs($this->user)
+        ->post('/logout')
+        ->assertRedirect(route('login'))
+        ->assertSessionHas('status');
+
+    expect(Auth::check())->toBeFalse();
+});
+
+it('says so on the sign-in screen', function () {
+    $this->actingAs($this->user)->post('/logout');
+
+    $this->followingRedirects()->get('/login')->assertSee('You have been signed out.');
 });
