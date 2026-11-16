@@ -10,6 +10,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Fixed
 
 - The Playground demo page overflowed narrow screens; synced with Gentelella 4.2.1.
+- The test fixtures directory is now `tests/Fixtures`, matching its namespace, so the suite loads on
+  case-sensitive filesystems. CI on Linux had been failing since 1.0.0.
 
 ### Changed
 
