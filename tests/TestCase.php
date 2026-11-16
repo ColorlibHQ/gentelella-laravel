@@ -20,7 +20,7 @@ abstract class TestCase extends Orchestra
         // otherwise throw before any markup is produced.
         $this->withoutVite();
 
-        $this->app['view']->addLocation(__DIR__.'/fixtures/views');
+        $this->app['view']->addLocation(__DIR__.'/Fixtures/views');
 
         // ShareErrorsFromSession does this on every web request. Views rendered
         // directly in a test have no request behind them, and @error would
