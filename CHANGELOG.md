@@ -5,6 +5,20 @@ All notable changes to `colorlibhq/gentelella-laravel` are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2026-11-17
+
+### Fixed
+
+- The Playground demo page overflowed narrow screens; synced with Gentelella 4.2.1.
+
+### Changed
+
+- Development dependencies refreshed: Pest 5 (on PHP 8.4+; PHP 8.3 keeps resolving Pest 4),
+  Pint 1.32, Larastan 3.15, Testbench 11.3 and Playwright 1.65. The package's runtime requirements
+  are unchanged.
+
+[1.0.3]: https://github.com/ColorlibHQ/gentelella-laravel/releases/tag/v1.0.3
+
 ## [1.0.2] - 2026-09-10
 
 ### Fixed
