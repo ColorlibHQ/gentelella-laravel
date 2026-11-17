@@ -83,7 +83,7 @@ class InstallCommand extends Command
     {
         $this->newLine();
         $this->components->bulletList([
-            'npm install gentelella@^4.1 sass',
+            'npm install gentelella@^4.2.2 sass',
             "Add 'resources/js/gentelella.js' to the laravel() input array in vite.config.js",
             'npm run dev',
         ]);
