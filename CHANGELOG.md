@@ -5,6 +5,23 @@ All notable changes to `colorlibhq/gentelella-laravel` are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.4] - 2026-11-17
+
+### Fixed
+
+- Thirteen demo pages (contacts, e_commerce, file_manager, general_elements, invoice, kanban, map,
+  orders, playground, product_detail, projects, theme, user_management) were inert in a Laravel
+  app: their scripts import `/src/v4/*.js` and `leaflet`, which resolve against the template's
+  source tree and 404 here, so toasts, modals, menus, the kanban board, the file manager and the
+  map did nothing. In demo mode the layout now writes an import map to the files Vite built, and the
+  map page loads Leaflet's stylesheet. This needs the modules in your Vite inputs; see
+  [docs/demo.md](docs/demo.md#vite-setup-for-the-demo). New config: `demo_modules`,
+  `demo_stylesheets`.
+- `general_elements` and `orders` overflowed 390px screens. The rules Gentelella 4.2.1 added for
+  this are mirrored in the demo layout, so the demo is correct on any `gentelella@^4.2.0`.
+
+[1.0.4]: https://github.com/ColorlibHQ/gentelella-laravel/releases/tag/v1.0.4
+
 ## [1.0.3] - 2026-11-17
 
 ### Fixed
