@@ -5,6 +5,17 @@ All notable changes to `colorlibhq/gentelella-laravel` are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.5] - 2026-11-17
+
+### Changed
+
+- The documented and installer-advertised `gentelella` floor is now `^4.2.2`, which carries the
+  mobile overflow fixes and the relative-base build fix.
+- The demo layout no longer mirrors Gentelella 4.2.1's 390px overflow rules; the design system
+  ships them now.
+
+[1.0.5]: https://github.com/ColorlibHQ/gentelella-laravel/releases/tag/v1.0.5
+
 ## [1.0.4] - 2026-11-17
 
 ### Fixed
