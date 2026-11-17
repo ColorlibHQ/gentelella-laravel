@@ -117,3 +117,5 @@ See [Demo](demo.md).
 | Key | Default | |
 |---|---|---|
 | `vite` | `['resources/js/gentelella.js']` | Entries passed to `@vite` |
+| `demo_modules` | the design system modules and `leaflet` | Import map for the demo pages' inline scripts. Demo mode only |
+| `demo_stylesheets` | `['map' => ['…/leaflet.css']]` | Extra Vite stylesheets for single demo pages. Demo mode only |

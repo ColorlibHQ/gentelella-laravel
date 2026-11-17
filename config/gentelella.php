@@ -217,6 +217,39 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Demo page modules
+    |--------------------------------------------------------------------------
+    |
+    | The demo pages import the design system's modules by the paths they have in
+    | the template's source tree. In demo mode the layout emits an import map
+    | sending each specifier to the file Vite built, which only works for modules
+    | listed in your vite.config.js `input` (see docs/demo.md). Ignored unless
+    | `demo` is true.
+    |
+    */
+
+    'demo_modules' => [
+        '/src/v4/toast.js' => 'node_modules/gentelella/src/v4/toast.js',
+        '/src/v4/modal.js' => 'node_modules/gentelella/src/v4/modal.js',
+        '/src/v4/menus.js' => 'node_modules/gentelella/src/v4/menus.js',
+        '/src/v4/data-adapter.js' => 'node_modules/gentelella/src/v4/data-adapter.js',
+        '/src/v4/markup.js' => 'node_modules/gentelella/src/v4/markup.js',
+        '/src/v4/product-images.js' => 'node_modules/gentelella/src/v4/product-images.js',
+        '/src/v4/details.js' => 'node_modules/gentelella/src/v4/details.js',
+        '/src/v4/file-manager.js' => 'node_modules/gentelella/src/v4/file-manager.js',
+        '/src/v4/kanban.js' => 'node_modules/gentelella/src/v4/kanban.js',
+        '/src/v4/highlight.js' => 'node_modules/gentelella/src/v4/highlight.js',
+        '/src/v4/product-mockups.js' => 'node_modules/gentelella/src/v4/product-mockups.js',
+        'leaflet' => 'node_modules/leaflet/dist/leaflet-src.js',
+    ],
+
+    // Extra stylesheets for individual demo pages, keyed by page key.
+    'demo_stylesheets' => [
+        'map' => ['node_modules/leaflet/dist/leaflet.css'],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Demo account
     |--------------------------------------------------------------------------
     |
