@@ -8,7 +8,9 @@ use ColorlibHQ\Gentelella\Menu\MenuBuilder;
 use ColorlibHQ\Gentelella\Menu\MenuResult;
 use Illuminate\Contracts\Config\Repository as Config;
 use Illuminate\Contracts\Routing\UrlGenerator;
+use Illuminate\Foundation\Vite;
 use Illuminate\Routing\Router;
+use Throwable;
 
 /**
  * The package's public surface: menu, icons, breadcrumbs and page title.
@@ -149,6 +151,75 @@ class Gentelella
             'email' => (string) $user['email'],
             'password' => (string) $user['password'],
         ];
+    }
+
+    /**
+     * Where each module the demo pages import from lives in the Vite build.
+     *
+     * The generated demo pages carry inline module scripts that import
+     * `/src/v4/toast.js` and friends, paths that only exist in the template's
+     * own dev server, and `import('leaflet')`, a bare specifier. A browser
+     * resolves neither in a Laravel app, so every page behaviour built on them
+     * was inert. An import map redirects each specifier to the file Vite built.
+     *
+     * Only populated in demo mode, and only for modules the app has added to its
+     * Vite inputs; a missing one is skipped rather than throwing, so a half-set-up
+     * app degrades to the old behaviour instead of a 500.
+     *
+     * @return array<string, string>
+     */
+    public function demoImportMap(): array
+    {
+        if (! $this->config->get('gentelella.demo', false)) {
+            return [];
+        }
+
+        $modules = $this->config->get('gentelella.demo_modules', []);
+        $map = [];
+
+        foreach (is_array($modules) ? $modules : [] as $specifier => $input) {
+            $url = $this->viteAsset((string) $input);
+
+            if ($url !== null) {
+                $map[(string) $specifier] = $url;
+            }
+        }
+
+        return $map;
+    }
+
+    /**
+     * Stylesheets a single demo page needs beyond the design system.
+     *
+     * @return list<string>
+     */
+    public function demoStylesheets(string $pageKey): array
+    {
+        if (! $this->config->get('gentelella.demo', false)) {
+            return [];
+        }
+
+        $sheets = $this->config->get('gentelella.demo_stylesheets.'.$pageKey, []);
+        $urls = [];
+
+        foreach (is_array($sheets) ? $sheets : [] as $input) {
+            $url = $this->viteAsset((string) $input);
+
+            if ($url !== null) {
+                $urls[] = $url;
+            }
+        }
+
+        return $urls;
+    }
+
+    private function viteAsset(string $input): ?string
+    {
+        try {
+            return app(Vite::class)->asset($input) ?: null;
+        } catch (Throwable) {
+            return null;
+        }
     }
 
     /**

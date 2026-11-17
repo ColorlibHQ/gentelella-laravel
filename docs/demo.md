@@ -54,6 +54,50 @@ Two things that conversion has to get right, both of which were bugs first:
 Pages the package owns by hand — currently just `tables` — are listed in `CRUD_OWNED` in the export
 script and are never overwritten.
 
+## Vite setup for the demo
+
+Most of the demo pages are static markup, but 13 of them carry a script that imports the design
+system's modules (toasts, modals, menus, the kanban board, the file manager, Leaflet for the map).
+In the HTML edition those imports resolve against the template's own source tree. In a Laravel app
+there is no such tree, so the layout emits an
+[import map](https://developer.mozilla.org/docs/Web/HTML/Element/script/type/importmap) that sends
+each specifier to the file Vite built. For that, Vite has to build them: add the modules to your
+`vite.config.js` inputs and tell Rollup to keep their exports.
+
+```js
+// vite.config.js
+const demoModules = [
+    'details', 'file-manager', 'highlight', 'kanban', 'markup', 'menus', 'modal',
+    'data-adapter', 'product-images', 'product-mockups', 'toast',
+].map((name) => `node_modules/gentelella/src/v4/${name}.js`)
+
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: [
+                'resources/js/gentelella.js',
+                ...demoModules,
+                'node_modules/leaflet/dist/leaflet-src.js',
+                'node_modules/leaflet/dist/leaflet.css',
+            ],
+            refresh: true,
+        }),
+    ],
+    build: {
+        // Without this Rollup drops the exports of an entry nothing else imports,
+        // and the pages fail with "does not provide an export named …".
+        rollupOptions: { preserveEntrySignatures: 'exports-only' },
+    },
+})
+```
+
+`leaflet` is installed with `gentelella`, so there is nothing extra to `npm install`.
+
+The list lives in `gentelella.demo_modules` (and `gentelella.demo_stylesheets` for the map's CSS),
+so you can trim it if you only keep some pages. The import map is only written when `demo` is on,
+and a module missing from the build is skipped rather than raising an error: that page simply
+loses its behaviour until you add the entry. After changing `vite.config.js`, run `npm run build`.
+
 ## The demo account
 
 A public demo needs a way in. `gentelella:demo` creates one, and the sign-in screen fills it in:

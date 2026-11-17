@@ -45,6 +45,27 @@
 --}}
 <script>(function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;var theme=t||(d?'dark':'light');document.documentElement.setAttribute('data-theme',theme);var dir=localStorage.getItem('dir');if(dir==='rtl'||dir==='ltr'){document.documentElement.setAttribute('dir',dir);}}catch(e){}})();</script>
 
+{{-- Demo mode only: lets the demo pages' inline modules resolve the design
+     system's modules and Leaflet. Must precede every module script. --}}
+@if ($demoModules = $gentelella->demoImportMap())
+<script type="importmap">@json(['imports' => $demoModules], JSON_UNESCAPED_SLASHES)</script>
+@endif
+@if (config('gentelella.demo', false))
+{{-- Gentelella 4.2.1 stopped these components widening the page at 390px (card
+     headers wrap; pill tabs and the stepper scroll inside their own box; underline
+     tabs wrap). Mirrored here so the demo is correct on any gentelella ^4.2.0.
+     Redundant, and safe to drop, once the floor is 4.2.1 or later. --}}
+<style>
+.card-header{flex-wrap:wrap}
+.tabs-pill{max-width:100%;overflow-x:auto}
+.tabs-underline{flex-wrap:wrap}
+.stepper{overflow-x:auto}
+</style>
+@endif
+@foreach ($gentelella->demoStylesheets(trim($__env->yieldContent('page_key'))) as $demoSheet)
+<link rel="stylesheet" href="{{ $demoSheet }}">
+@endforeach
+
 @vite(config('gentelella.vite', []))
 @stack('head')
 </head>
