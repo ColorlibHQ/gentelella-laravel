@@ -50,18 +50,6 @@
 @if ($demoModules = $gentelella->demoImportMap())
 <script type="importmap">@json(['imports' => $demoModules], JSON_UNESCAPED_SLASHES)</script>
 @endif
-@if (config('gentelella.demo', false))
-{{-- Gentelella 4.2.1 stopped these components widening the page at 390px (card
-     headers wrap; pill tabs and the stepper scroll inside their own box; underline
-     tabs wrap). Mirrored here so the demo is correct on any gentelella ^4.2.0.
-     Redundant, and safe to drop, once the floor is 4.2.1 or later. --}}
-<style>
-.card-header{flex-wrap:wrap}
-.tabs-pill{max-width:100%;overflow-x:auto}
-.tabs-underline{flex-wrap:wrap}
-.stepper{overflow-x:auto}
-</style>
-@endif
 @foreach ($gentelella->demoStylesheets(trim($__env->yieldContent('page_key'))) as $demoSheet)
 <link rel="stylesheet" href="{{ $demoSheet }}">
 @endforeach

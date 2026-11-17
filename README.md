@@ -60,7 +60,7 @@ php artisan gentelella:install
 
 The installer publishes `config/gentelella.php`, drops the Vite entry stubs into
 `resources/css/gentelella.scss` and `resources/js/gentelella.js`, and offers to `npm install` the
-two frontend dependencies — `gentelella@^4.1` and `sass`. ECharts, DataTables and Leaflet stay
+two frontend dependencies — `gentelella@^4.2.2` and `sass`. ECharts, DataTables and Leaflet stay
 opt-in, mirroring the lazy vendor chunks in the upstream template.
 
 ## The sidebar menu

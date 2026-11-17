@@ -21,7 +21,7 @@ cd gentelella-preview
 composer require colorlibhq/gentelella-laravel
 
 php artisan gentelella:install
-npm install gentelella@^4.1 sass
+npm install gentelella@^4.2.2 sass
 # add resources/js/gentelella.js to vite.config.js, plus the demo modules
 # (see demo.md, "Vite setup for the demo"), then:
 npm ci && npm run build

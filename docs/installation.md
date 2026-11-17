@@ -30,7 +30,7 @@ resources/css/gentelella.scss  your overrides
 ## 3. Install the frontend dependencies
 
 ```bash
-npm install gentelella@^4.1 sass
+npm install gentelella@^4.2.2 sass
 ```
 
 Only two. ECharts, DataTables and Leaflet are pulled in lazily by the pages that use them, exactly
